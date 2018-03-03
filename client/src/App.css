@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:400|Raleway:500');
+
+.App {
+  font-family: Oswald;
+}
+
+.App > p {
+  font-family: Raleway;
+  color: purple;
+}
