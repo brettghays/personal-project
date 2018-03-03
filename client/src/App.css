@@ -1,10 +1,91 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:400|Raleway:500');
 
-.App {
+.oswald {
   font-family: Oswald;
 }
 
 .App > p {
   font-family: Raleway;
   color: purple;
+}
+
+.container {
+  height: 100vh;
+  display: grid;
+  grid-gap: 3px;
+  grid-template-columns: 1.25fr repeat(11, 1fr);
+  grid-template-rows: .75fr 2.25fr 2.25fr 1.5fr;
+  grid-template-areas: 
+    "n h h h h h h h h h h h"
+    "n i i i i i i i s s p p"
+    "n i i i i i i i t t f f"
+    "n c c c c c c c t t f f";
+}
+
+.align-left {
+  margin-left: auto;
+}
+
+.header {
+  grid-area: h;
+  background-color: #f1f7ed;
+  font-size: 2em;
+  border: 1px black solid;
+}
+
+.navbar {
+  grid-area: n;
+  background-color: #382268;
+  font-size: 2em;
+  border: 1px black solid;
+  color: #f1f7ed;
+}
+
+.image {
+  grid-area: i;
+  background-color: #f1f7ed;
+  font-size: 2em;
+  border: 1px black solid;
+}
+
+.mission {
+  grid-area: m;
+  background-color: #f1f7ed;
+  font-size: 2em;
+  border: 1px black solid;
+}
+
+.schedule {
+  grid-area: s;
+  background-color: #f1f7ed;
+  font-size: 2em;
+  border: 1px black solid;
+}
+
+.player {
+  grid-area: p;
+  background-color: #f1f7ed;
+  font-size: 2em;
+  border: 1px black solid;
+}
+
+.twitter {
+  grid-area: t;
+  background-color: #f1f7ed;
+  font-size: 2em;
+  border: 1px black solid;
+}
+
+.coach {
+  grid-area: c;
+  background-color: #f1f7ed;
+  font-size: 2em;
+  border: 1px black solid;
+}
+
+.feed {
+  grid-area: f;
+  background-color: #f1f7ed;
+  font-size: 2em;
+  border: 1px black solid;
 }
