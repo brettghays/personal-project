@@ -12,7 +12,7 @@
 .container {
   height: 100vh;
   display: grid;
-  grid-gap: 3px;
+  grid-gap: 5px;
   grid-template-columns: 1.25fr repeat(11, 1fr);
   grid-template-rows: .75fr 2.25fr 2.25fr 1.5fr;
   grid-template-areas: 
@@ -22,15 +22,13 @@
     "n c c c c c c c t t f f";
 }
 
-.align-left {
-  margin-left: auto;
-}
-
 .header {
   grid-area: h;
   background-color: #f1f7ed;
   font-size: 2em;
   border: 1px black solid;
+  text-align: right;
+  padding: 10px
 }
 
 .navbar {
@@ -46,6 +44,8 @@
   background-color: #f1f7ed;
   font-size: 2em;
   border: 1px black solid;
+  display: flex;
+  justify-content: space-around;
 }
 
 .mission {
@@ -89,3 +89,10 @@
   font-size: 2em;
   border: 1px black solid;
 }
+
+img {
+  max-width: 95%;
+  max-height: 95%;
+  margin: 10px;
+}
+
