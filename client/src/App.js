@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Landing from './Components/Landing/landing'
+import Routes from './routes'
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <Landing />
+      <div>{Routes}</div>
     );
   }
 }

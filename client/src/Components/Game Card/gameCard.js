@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
-export default class Roster extends Component {
+export default class GameCard extends Component {
     render() {
         return(
-            <div>Roster</div>
+            <div>Game Card</div>
         )
     }
 }
