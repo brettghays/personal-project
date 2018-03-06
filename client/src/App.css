@@ -4,6 +4,11 @@
   font-family: Oswald;
 }
 
+.raleway {
+  font-family: Raleway;
+  font-size: 1.5em;
+}
+
 .App > p {
   font-family: Raleway;
   color: purple;
@@ -13,13 +18,25 @@
   height: 100vh;
   display: grid;
   grid-gap: 5px;
-  grid-template-columns: 1.25fr repeat(11, 1fr);
+  grid-template-columns: 200px repeat(11, 1fr);
   grid-template-rows: .75fr 2.25fr 2.25fr 1.5fr;
   grid-template-areas: 
     "n h h h h h h h h h h h"
     "n i i i i i i i s s s s"
     "n i i i i i i i p p p p"
     "n c c c c c c c m m m m";
+}
+
+.child-container {
+  height: 100vh;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 200px repeat(6, auto);
+  grid-template-rows: .75fr .75fr 6.25fr;
+  grid-template-areas: 
+    "n h h h h h h"
+    "n u v w x y z"
+    "n a b c d e f";
 }
 
 .header {
@@ -71,13 +88,12 @@
   border: 1px black solid;
 }
 
-/* .twitter {
-  grid-area: t;
-  background-color: #f1f7ed;
-  font-size: 2em;
-  border: 1px black solid;
+.col-header {
+  font-weight: bold;
+  text-align: center;
+  text-decoration-line: underline;
 }
- */
+
 .coach {
   grid-area: c;
   background-color: #f1f7ed;
@@ -85,12 +101,83 @@
   border: 1px black solid;
 }
 
-/* .feed {
+.a {
+  grid-area: a;
+  background-color: #f1f7ed;
+  border: 1px black solid;
+}
+
+.b{
+  grid-area: b;
+  background-color: #f1f7ed;
+  border: 1px black solid;
+}
+
+.c {
+  grid-area: c;
+  background-color: #f1f7ed;
+  border: 1px black solid;
+}
+
+.d {
+  grid-area: d;
+  background-color: #f1f7ed;
+  border: 1px black solid;
+}
+
+.e {
+  grid-area: e;
+  background-color: #f1f7ed;
+  border: 1px black solid;
+}
+
+.f {
   grid-area: f;
+  background-color: #f1f7ed;
+  border: 1px black solid;
+}
+
+.u {
+  grid-area: u;
   background-color: #f1f7ed;
   font-size: 2em;
   border: 1px black solid;
-} */
+}
+
+.v {
+  grid-area: v;
+  background-color: #f1f7ed;
+  font-size: 2em;
+  border: 1px black solid;
+}
+
+.w {
+  grid-area: w;
+  background-color: #f1f7ed;
+  font-size: 2em;
+  border: 1px black solid;
+}
+
+.x {
+  grid-area: x;
+  background-color: #f1f7ed;
+  font-size: 2em;
+  border: 1px black solid;
+}
+
+.y {
+  grid-area: y;
+  background-color: #f1f7ed;
+  font-size: 2em;
+  border: 1px black solid;
+}
+
+.z {
+  grid-area: z;
+  background-color: #f1f7ed;
+  font-size: 2em;
+  border: 1px black solid;
+}
 
 .links {
   display: flex;
@@ -109,3 +196,7 @@ img {
   margin: 10px;
 }
 
+p {
+  font-size: 1em;
+  text-decoration: none;
+}
