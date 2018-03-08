@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 export default class Schedule extends Component {
-    checkButton() {
-        console.log("connected!")
-    }
     render() {
         return(
             <div className="child-container">
@@ -22,12 +19,12 @@ export default class Schedule extends Component {
                 </div>
             </div>
             
-            <div className="col-header oswald u">date</div>
-            <div className="col-header oswald v">date</div>
-            <div className="col-header oswald w">date</div>
-            <div className="col-header oswald x">date</div>
-            <div className="col-header oswald y">date</div>
-            <div className="col-header oswald z">date</div> 
+            <div className="col-header oswald u">Date</div>
+            <div className="col-header oswald v">Time</div>
+            <div className="col-header oswald w">Game</div>
+            <div className="col-header oswald x">Location</div>
+            <div className="col-header oswald y">Result</div>
+            <div className="col-header oswald z">Other</div> 
 
             <div className="raleway a">
                 <p>November 26</p>
@@ -55,7 +52,7 @@ export default class Schedule extends Component {
             </div>
 
             <div className="raleway f">
-                <button className="button" disabled = 'false' onClick={this.checkButton}>Test</button>
+                <p>Test</p>
                 <p>2nd Test</p>
                 <p>Test</p>
                 <p>2nd Test</p>
