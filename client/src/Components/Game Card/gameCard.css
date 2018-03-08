@@ -31,7 +31,7 @@
 .row2 {
     display: flex;
     justify-content: space-around;
-    height: 4fr;
+    height: 284px;
 }
 
 .row3 {
@@ -53,7 +53,7 @@
     grid-column: col-start 9 / span 4;
 }
 
-img {
+/* img {
     height: 284px;
     width: 284px;
-}
+} */
