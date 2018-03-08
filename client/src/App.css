@@ -72,6 +72,7 @@
   background-color: #f1f7ed;
   font-size: 2em;
   border: 1px black solid;
+  padding: 10px;
 }
 
 .schedule {
@@ -79,6 +80,7 @@
   background-color: #f1f7ed;
   font-size: 2em;
   border: 1px black solid;
+  padding: 10px;
 }
 
 .player {
@@ -86,6 +88,7 @@
   background-color: #f1f7ed;
   font-size: 2em;
   border: 1px black solid;
+  padding: 10px;
 }
 
 .col-header {
@@ -99,6 +102,7 @@
   background-color: #f1f7ed;
   font-size: 2em;
   border: 1px black solid;
+  padding: 10px;
 }
 
 .a {
@@ -191,8 +195,8 @@
 }
 
 img {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 95%;
+  max-height: 95%;
   margin: 10px;
 }
 
@@ -221,5 +225,33 @@ p {
   flex-direction: column;
   justify-content: space-around;
   align-content: center;
+}
+
+.zRow {
+  height: 175px;
+  width: 175px;
+  display: flex;
+  align-content: center;
+}
+
+.yrow {
+  font-size: .65em;
+}
+
+.xRow {
+  height: 175px;
+  width: auto;
+  display: flex;
+  font-size: .6em;
+}
+
+.xImg {
+  width: 116px;
+}
+
+.xCol {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
 }
 
