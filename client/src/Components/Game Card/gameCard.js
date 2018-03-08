@@ -9,7 +9,7 @@ export default class GameCard extends Component {
         return(
             <div className="gameCardContainer">
                 <div className="header1 oswald">
-                    <p>Lehi Girls Basketball 2013-2014</p>
+                    <p>Lehi Girls Basketball 2013-2014 Game Details</p>
                 </div>
 
                 <div className="navbar1 oswald">
