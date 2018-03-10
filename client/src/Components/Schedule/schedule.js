@@ -7,9 +7,23 @@ export default class Schedule extends Component {
         axios.get('/api/games')
         .then(res => {
             console.log(res.data)
+            console.log(res.data[0].game_date)
+            const game1Date = res.data[0].game_date;
+            const game1Time = res.data[0].game_time;
+            const game1Home = res.data[0].home_team;
+            const game1Guest = res.data[0].guest_team;
+            const game1Location = res.data[0].game_location;
+            const game1HS = res.data[0].home_score;
+            const game1GS = res.data[0].guest_score;
+            const game1Result = res.data[0].game_result;
         })
         .catch(err => console.log(err))
+
+        
     }
+
+//hardcoding response data right now
+    
 
     render() {
         return(

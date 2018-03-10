@@ -65,7 +65,7 @@ app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
         .then(user => {
             console.log('user: ', user)
             if(user.length && user[0].session_id){
-                return done(null, profile);
+                return done(null, user);
             } else{
                 dbInstance.create_user([passportUser.id])
                 .then(user => {
@@ -87,8 +87,9 @@ app.get('/api/auth/me', (req, res, next) => {
   })
 
 app.get('/api/auth/logout', (req, res) => {
-    req.logOut();
     console.log(req.session.passport.user)
+    req.logOut();
+    console.log('Successful logout!',req.session.passport)
     return res.redirect('http://localhost:3000/#/');
     
   })
