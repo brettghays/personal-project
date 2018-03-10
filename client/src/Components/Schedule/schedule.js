@@ -1,7 +1,16 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios'; 
 
 export default class Schedule extends Component {
+    componentDidMount(){
+        axios.get('/api/games')
+        .then(res => {
+            console.log(res.data)
+        })
+        .catch(err => console.log(err))
+    }
+
     render() {
         return(
             <div className="child-container">
@@ -23,8 +32,8 @@ export default class Schedule extends Component {
             <div className="col-header oswald v">Time</div>
             <div className="col-header oswald w">Game</div>
             <div className="col-header oswald x">Location</div>
-            <div className="col-header oswald y">Result</div>
-            <div className="col-header oswald z">Other</div> 
+            <div className="col-header oswald y">Score</div>
+            <div className="col-header oswald z">Result</div> 
 
             <div className="raleway a">
                 <p>November 26</p>

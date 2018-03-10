@@ -20,8 +20,8 @@ export default class Landing extends Component {
                     </div>
 
                     <div className="links-bottom">
-                        <Link to = '/results' className = 'links'>Register / Login</Link>
-                        <Link to = '/roster/:id' className = 'links'>Signout</Link>
+                        <a href = 'http://localhost:3001/api/auth' className = 'links'>Register / Login</a>
+                        <a href = 'http://localhost:3001/api/auth/logout' className = 'links'>Signout</a>
                     </div>
                 </div>
                 <div className="image oswald">

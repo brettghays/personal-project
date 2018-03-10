@@ -1,0 +1,1 @@
+DELETE FROM Schedule WHERE game_id = $1;

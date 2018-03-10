@@ -1,0 +1,1 @@
+INSERT INTO Users (session_id) VALUES ($1);
