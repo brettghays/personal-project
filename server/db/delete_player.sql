@@ -1,0 +1,1 @@
+DELETE FROM Roster WHERE player_id = $1;

@@ -98,6 +98,64 @@ app.get('/api/auth/logout', (req, res) => {
 
 //Roster Endpoints
 
+app.get('/api/players', (req, res) => {
+    const dbInstance = app.get('db');
+    dbInstance.read_players()
+        .then(players => {
+            res.status(200).send(players)
+        })
+        .catch(err => console.log(err))
+});
+
+app.get('/api/player/:id', (req, res) => {
+    const dbInstance = app.get('db');
+    const playerID = req.params.id;
+    dbInstance.read_player([playerID])
+        .then(player => {
+            console.log('Player is: ', player[0]);
+            res.status(200).send(player[0])
+        })
+        .catch(err => console.log(err))
+});
+
+app.post('/api/players', (req, res) => {
+    const dbInstance = app.get('db');
+    const {first_name,last_name,player_number,player_height,postion,roster_years,player_image,player_fav_food,player_fav_quote,player_unique_fact,player_nickName} = req.body;
+    
+    dbInstance.create_player([first_name,last_name,player_number,player_height,postion,roster_years,player_image,player_fav_food,player_fav_quote,player_unique_fact,player_nickName])
+        .then(player => {
+            console.log(player);
+            res.status(200).send(player)
+        })
+        .catch(err => console.log(err))
+});
+
+app.patch('/api/player/:id', (req, res) => {
+    const dbInstance = app.get('db');
+    const {first_name,last_name,player_number,player_height,postion,roster_years,player_image,player_fav_food,player_fav_quote,player_unique_fact,player_nickName} = req.body;
+    const playerID = req.params.id;
+
+    dbInstance.update_player([playerID, first_name,last_name,player_number,player_height,postion,roster_years,player_image,player_fav_food,player_fav_quote,player_unique_fact,player_nickName])
+        .then(() => {
+            dbInstance.read_player([playerID])
+                .then(player => {
+                    console.log(player[0]);
+                    res.status(200).send(player[0])
+                })
+                .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
+});
+
+app.delete('/api/player/:id', (req, res) => {
+    const dbInstance = app.get('db');
+    const playerID = req.params.id;
+    dbInstance.delete_player([playerID])
+        .then(player => {
+            res.status(200).send(player)
+        })
+        .catch(err => console.log(err))
+})
 //Schedule Endpoints
 
 app.get('/api/games', (req, res) => {
