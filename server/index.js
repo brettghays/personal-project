@@ -56,7 +56,7 @@ app.get('/api/auth', passport.authenticate('auth0', {
 
 app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
     //console.log('res.sessionID: ', req.sessionID)
-    //console.log("Passport.user: ",req.session.passport.user);//this gives me what was set for user and id
+    console.log("Passport.user: ",req.session.passport.user);//this gives me what was set for user and id
     let passportUser = req.session.passport.user;
     //console.log(passportUser.id)
     const dbInstance = app.get('db');
@@ -67,7 +67,7 @@ app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
             if(user.length && user[0].session_id){
                 return done(null, user);
             } else{
-                dbInstance.create_user([passportUser.id])
+                dbInstance.create_user([passportUser.id, passportUser.firstname, passportUser.lastname])
                 .then(user => {
                     console.log('User created in db: ',user);
                     //console.log('profile, ', profile)

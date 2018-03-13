@@ -9,7 +9,8 @@ module.exports = new Auth0Strategy({
     domain:       domain,
     clientID:     clientID,
     clientSecret: clientSecret,
-    callbackURL:  '/api/auth/login'
+    callbackURL:  '/api/auth/login',
+    scope: 'openid profile'
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
       // accessToken is the token to call Auth0 API (not needed in the most cases)
