@@ -112,7 +112,7 @@ function reducer(state=initialState, action) {
         case UPDATE_NICKNAME:
             return Object.assign({}, state, {player_nickname: action.payload});
 
-    
+        default: return state;
     }
 }
 

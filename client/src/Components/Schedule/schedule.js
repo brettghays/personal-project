@@ -1,21 +1,17 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux'
 import axios from 'axios'; 
+import {updateSchedule} from '../../Reducer/reducer';
 
-export default class Schedule extends Component {
+class Schedule extends Component {
     componentDidMount(){
         axios.get('/api/games')
         .then(res => {
-            console.log(res.data)
-            console.log(res.data[0].game_date)
-            const game1Date = res.data[0].game_date;
-            const game1Time = res.data[0].game_time;
-            const game1Home = res.data[0].home_team;
-            const game1Guest = res.data[0].guest_team;
-            const game1Location = res.data[0].game_location;
-            const game1HS = res.data[0].home_score;
-            const game1GS = res.data[0].guest_score;
-            const game1Result = res.data[0].game_result;
+            //console.log(res.data)
+            //
+            //console.log(schedule)
+            this.props.updateSchedule(res.data);
         })
         .catch(err => console.log(err))
 
@@ -26,6 +22,35 @@ export default class Schedule extends Component {
     
 
     render() {
+        const schedule = this.props.schedule.map(game => {
+            return (
+                <div className="childGame" key={game.game_id}>
+                    <div className="raleway a">
+                        <p>{game.game_date}</p>
+                    </div>
+
+                    <div className="raleway b">
+                        <p>{game.game_time}</p>
+                    </div>
+
+                    <div className="raleway c">
+                        <p>{game.guest_team} @ {game.home_team}</p>
+                    </div>
+
+                    <div className="raleway d">
+                        <p>{game.game_location}</p>
+                    </div>
+
+                    <div className="raleway e">
+                        <p>{game.guest_score} - {game.home_score}</p>
+                    </div>
+
+                    <div className="raleway f">
+                        <p>{game.game_result}</p>
+                    </div>
+                </div>
+            )
+        })
         return(
             <div className="child-container">
             <div className="header oswald">Lehi Girls Basketball 2013-2014 Schedule</div>
@@ -49,7 +74,9 @@ export default class Schedule extends Component {
             <div className="col-header oswald y">Score</div>
             <div className="col-header oswald z">Result</div> 
 
-            <div className="raleway a">
+            <div className="gameParent">{schedule}</div>
+
+            {/* <div className="raleway a">
                 <p>November 26</p>
                 <p>December 6</p>
             </div> 
@@ -97,8 +124,17 @@ export default class Schedule extends Component {
                 <p>2nd Test</p>
                 <p>Last</p>
             </div>
-            
+             */}
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    const {schedule} = state;
+    return {
+        schedule
+    };
+}
+
+export default connect(mapStateToProps, {updateSchedule})(Schedule);

@@ -255,3 +255,6 @@ p {
   margin-left: 10px;
 }
 
+.childGame {
+  display: flex;
+}
