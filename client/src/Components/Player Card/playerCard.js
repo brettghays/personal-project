@@ -1,84 +1,33 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Kaylie from '../../Assets/Kaylie.jpg'
-import Beth from '../../Assets/Beth.jpg'
-import Tyra from '../../Assets/Tyra.jpg'
-import Kiera from '../../Assets/Kiera.jpg'
-import Brianna from '../../Assets/Brianna.jpg'
+import {connect} from 'react-redux';
+import axios from 'axios';
+import {updateFirstName, updateLastName, updatePlayerNumber, updatePlayerImage, updatePlayerHeight, updatePosition, updateRosterYears, updateFavFood, updateFavQuote, updateFact, updateNickname} from '../../Reducer/reducer';
 
-export default class PlayerCard extends Component {
+class PlayerCard extends Component {
     //This will actually be using a Get request to get info from DB and setting on state instead of mapping
-    constructor(){
-        super();
-        this.state = {
-            player: [
-                {id: 1,
-                 image: Kaylie,
-                 firstName: 'Kaylie',
-                 lastName: 'Bartholomew',
-                 number: 4,
-                 position: 'Guard',
-                 height: '5 ft 4 in',
-                 class: 'Senior'
-                 },
-                {id: 2,
-                 image: Tyra,
-                 firstName: 'Tyra',
-                 lastName: 'Rodriguez',
-                 number: 11,
-                 position: 'Guard',
-                 height: '5 ft 8 in',
-                 class: 'Senior'
-                 },
-                {id: 3,
-                 image: Brianna,
-                 firstName: 'Brianna',
-                 lastName: 'Bean',
-                 number: 14,
-                 position: 'Guard',
-                 height: '5 ft 5 in',
-                 class: 'Senior'
-                 },
-                {id: 4,
-                 image: Kiera,
-                 firstName: 'Kiera',
-                 lastName: 'Pulham',
-                 number: 24,
-                 position: 'Forward',
-                 height: '5 ft 10 in',
-                 class: 'Senior'
-                 },
-                {id: 5,
-                 image: Beth,
-                 firstName: 'Beth',
-                 lastName: 'Beeston',
-                 number: 32,
-                 position: 'Forward',
-                 height: '5 ft 11 in',
-                 class: 'Senior'
-                 },
-            ]
-        }
-    }    
+    componentDidMount() {
+        axios.get(`/api/player/${this.props.match.params.id}`)
+            .then(res => {
+                //console.log(res.data)
+                const {first_name, last_name, player_number, player_height, postion, roster_years, player_image, player_fav_food, player_fav_quote, player_nickname, player_unique_fact} = res.data;
+
+                this.props.updatePlayerImage(player_image);
+                this.props.updateFirstName(first_name);
+                this.props.updateLastName(last_name);
+                this.props.updatePlayerNumber(player_number);
+                this.props.updatePosition(postion);
+                this.props.updatePlayerHeight(player_height);
+                this.props.updateRosterYears(roster_years);
+                this.props.updateFavFood(player_fav_food);
+                this.props.updateFavQuote(player_fav_quote);
+                this.props.updateNickname(player_nickname);
+                this.props.updateFact(player_unique_fact);
+            })
+            .catch(err => console.log(err))
+    }
     
-    render() {
-        const playerCard = this.state.player.map(player => {
-            return (
-               
-                <div key={player.id} className="child1">
-                    <div className="img">
-                        <img src={player.image} alt=""/>
-                    </div>
-                    <div className="info">
-                        <div className="name">{player.firstName} {player.lastName}</div>
-                        <div className="num position">{player.number} | {player.position}</div>
-                        <div className="height">Height: {player.height}</div>
-                        <div className="class">Class: {player.class}</div>
-                    </div>
-                </div>
-            )
-        });        
-        
+    render() {      
         return (
             <div className="container">
                 <div className="header oswald">
@@ -93,8 +42,34 @@ export default class PlayerCard extends Component {
                     </div>
                 </div>
 
-
-                <div className="parent">{playerCard}</div>
+                <div className="img">
+                    <img src={this.props.player_image} alt=""/>
+                </div>
+                <div className="info">
+                    <div className="name">{this.props.first_name} {this.props.last_name}</div>
+                    <div className="num position">{this.props.player_number} | {this.props.position}</div>
+                    <div className="height">Height: {this.props.player_height}</div>
+                    <div className="class">Varsity Roster Years: {this.props.roster_years}</div>
+                </div>
             </div>
         )
     }}
+
+    let mapStateToProps = (state) => {
+        const {first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_unique_fact, player_nickname} = state;
+        return {
+            first_name,
+            last_name,
+            player_number,
+            player_height,
+            position,
+            roster_years,
+            player_image,
+            player_fav_food,
+            player_fav_quote,
+            player_nickname,
+            player_unique_fact
+        };
+    };
+
+    export default connect(mapStateToProps, {updateFirstName, updateLastName, updatePlayerNumber, updatePlayerHeight, updatePosition, updateRosterYears, updatePlayerImage, updateFavFood, updateFavQuote, updateNickname, updateFact})(PlayerCard);

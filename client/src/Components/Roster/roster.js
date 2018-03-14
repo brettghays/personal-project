@@ -16,13 +16,15 @@ class Roster extends Component {
     render() {
         const roster = this.props.roster.map((player,i) => {
             return (
-                <div className="childPlayer" key = {i}>
+                <div className="childPlayer" key = {player.player_id}>
                     <div className="raleway a">
                         <p>{player.player_number}</p>
                     </div>
 
                     <div className="raleway b">
-                        <p>{player.first_name} {player.last_name}</p>
+                        <Link to = {`/roster/${player.player_id}`}>
+                            <p>{player.first_name} {player.last_name}</p>
+                        </Link>
                     </div>
 
                     <div className="raleway c">
