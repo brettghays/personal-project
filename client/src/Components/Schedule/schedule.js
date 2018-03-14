@@ -26,7 +26,7 @@ class Schedule extends Component {
             return (
                 <div className="childGame" key={game.game_id}>
                     <div className="raleway a">
-                        <p>{game.game_date}</p>
+                        <p>{game.game_id}. {game.game_date}</p>
                     </div>
 
                     <div className="raleway b">
