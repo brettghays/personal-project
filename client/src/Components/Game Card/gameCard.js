@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import Navbar from '../Navbar/navbar';
 import {updateGameId, updateGuestTeam, updateHomeTeam, updateGameDate, updateHomeImage, updateGuestImage, updateHomeScore, updateGuestScore, updateGameTime, updateGameLocation, updateGameResult} from '../../Reducer/reducer';
 import './gameCard.css';
 
@@ -34,18 +35,7 @@ class GameCard extends Component {
                     <p>Lehi Girls Basketball 2013-2014 Game Details</p>
                 </div>
 
-                <div className="navbar1 oswald">
-                    <div className="links-top">
-                        <Link to = '/' className = 'links'>Home</Link>
-                        <Link to = '/roster' className = 'links'>Roster</Link>
-                        <Link to = '/schedule' className = 'links'>Schedule</Link>
-                    </div>
-
-                    <div className="links-bottom">
-                        <Link to = '/results' className = 'links'>Register / Login</Link>
-                        <Link to = '/roster/:id' className = 'links'>Signout</Link>
-                    </div>
-                </div>
+                <Navbar />
 
                 <div className="gameCard oswald">
                     <div className="row1">

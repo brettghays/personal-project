@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import teamPic from '../../Assets/jvVarsity.jpg'
+import Navbar from '../Navbar/navbar';
 import Lehi from '../../Assets/lehi-logo.jpg';
 import Judge from '../../Assets/judge-memorial-logo.jpg';
 import Kaylie from '../../Assets/Kaylie.jpg';
@@ -12,18 +13,9 @@ export default class Landing extends Component {
                 <div className="header oswald">
                     <p>Lehi Girls Basketball 2013-2014</p>
                 </div>
-                <div className="navbar oswald">
-                    <div className="links-top">
-                        <Link to = '/' className = 'links'>Home</Link>
-                        <Link to = '/roster' className = 'links'>Roster</Link>
-                        <Link to = '/schedule' className = 'links'>Schedule</Link>
-                    </div>
+               
+                <Navbar />
 
-                    <div className="links-bottom">
-                        <a href = 'http://localhost:3001/api/auth' className = 'links'>Register / Login</a>
-                        <a href = 'http://localhost:3001/api/auth/logout' className = 'links'>Signout</a>
-                    </div>
-                </div>
                 <div className="image oswald">
                 <img src={teamPic} alt="team pic"/>
                 </div>

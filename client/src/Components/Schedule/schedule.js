@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios'; 
+import Navbar from '../Navbar/navbar';
 import {updateSchedule} from '../../Reducer/reducer';
 
 class Schedule extends Component {
@@ -56,18 +57,8 @@ class Schedule extends Component {
         return(
             <div className="child-container">
             <div className="header oswald">Lehi Girls Basketball 2013-2014 Schedule</div>
-            <div className="navbar oswald">
-                <div className="links-top">
-                    <Link to = '/' className = 'links'>Home</Link>
-                    <Link to = '/roster' className = 'links'>Roster</Link>
-                    <Link to = '/schedule' className = 'links'>Schedule</Link>
-                </div>
-
-                <div className="links-bottom">
-                    <Link to = '/results' className = 'links'>Register / Login</Link>
-                    <Link to = '/roster/:id' className = 'links'>Signout</Link>
-                </div>
-            </div>
+            
+            <Navbar />
             
             <div className="col-header oswald u">Date</div>
             <div className="col-header oswald v">Time</div>
