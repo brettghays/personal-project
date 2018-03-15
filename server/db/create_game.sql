@@ -1,1 +1,1 @@
-insert into schedule (game_id,game_date,game_time,home_team,guest_team,game_location,game_result,home_score,guest_score) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);
+insert into schedule (game_id,game_date,game_time,home_team,home_image,guest_team,guest_image,game_location,game_result,home_score,guest_score) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11);

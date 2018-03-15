@@ -1,10 +1,13 @@
 //setup initial state
 const initialState = {
     schedule: [],
+    game_id: '',
     game_date: '',
     game_time: '',
     home_team: '',
+    home_image: '',
     guest_team: '',
+    guest_image: '',
     game_location: '',
     game_result: '',
     home_score: '',
@@ -25,10 +28,13 @@ const initialState = {
 
 //set up action types
 const UPDATE_SCHEDULE = 'UPDATE_SCHEDULE';
+const UPDATE_GAME_ID = 'UPDATE_GAME_ID';
 const UPDATE_GAME_DATE = 'UPDATE_GAME_DATE';
 const UPDATE_GAME_TIME = 'UPDATE_GAME_TIME';
 const UPDATE_HOME_TEAM = 'UPDATE_HOME_TEAM';
+const UPDATE_HOME_IMAGE = 'UPDATE_HOME_IMAGE';
 const UPDATE_GUEST_TEAM = 'UPDATE_GUEST_TEAM';
+const UPDATE_GUEST_IMAGE = 'UPDATE_GUEST_IMAGE';
 const UPDATE_GAME_LOCATION = 'UPDATE_GAME_LOCATION';
 const UPDATE_GAME_RESULT = 'UPDATE_GAME_RESULT';
 const UPDATE_HOME_SCORE = 'UPDATE_HOME_SCORE';
@@ -52,6 +58,9 @@ function reducer(state=initialState, action) {
         case UPDATE_SCHEDULE:
             return Object.assign({}, state, {schedule: action.payload});
 
+        case UPDATE_GAME_ID:
+            return Object.assign({}, state, {game_id: action.payload});
+
         case UPDATE_GAME_DATE:
             return Object.assign({}, state, {game_date: action.payload});
 
@@ -61,8 +70,14 @@ function reducer(state=initialState, action) {
         case UPDATE_HOME_TEAM:
             return Object.assign({}, state, {home_team: action.payload});
 
+        case UPDATE_HOME_IMAGE:
+            return Object.assign({}, state, {home_image: action.payload});
+
         case UPDATE_GUEST_TEAM:
             return Object.assign({}, state, {guest_team: action.payload});
+
+        case UPDATE_GUEST_IMAGE:
+            return Object.assign({}, state, {guest_image: action.payload});
 
         case UPDATE_GAME_LOCATION:
             return Object.assign({}, state, {game_location: action.payload});
@@ -123,6 +138,12 @@ export function updateSchedule (schedule) {
         payload: schedule
     }
 }
+export function updateGameId (gameID) {
+    return {
+        type: UPDATE_GAME_ID,
+        payload: gameID
+    }
+}
 export function updateGameDate (gameDate) {
     return {
         type: UPDATE_GAME_DATE,
@@ -141,10 +162,22 @@ export function updateHomeTeam (homeTeam) {
         payload: homeTeam
     }
 }
+export function updateHomeImage (homeImage) {
+    return {
+        type: UPDATE_HOME_IMAGE,
+        payload: homeImage
+    }
+}
 export function updateGuestTeam (guestTeam) {
     return {
         type: UPDATE_GUEST_TEAM,
         payload: guestTeam
+    }
+}
+export function updateGuestImage (guestImage) {
+    return {
+        type: UPDATE_GUEST_IMAGE,
+        payload: guestImage
     }
 }
 export function updateGameLocation (gameLocation) {
