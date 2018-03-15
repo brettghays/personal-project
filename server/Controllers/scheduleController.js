@@ -13,7 +13,7 @@
     guest_score integer
 ); */
 
-/* insert into schedule (game_id,game_date,game_time,home_team,guest_team,game_location,game_result,home_score,guest_score) VALUES (1,'November 26','7:00 pm','Judge Memorial','Lehi','Judge Memorial HS','Loss',76,54); */
+/* insert into schedule (game_id,game_date,game_time,home_team,home_image,guest_team,guest_image,game_location,game_result,home_score,guest_score) VALUES (1,'November 26','7:00 pm','Judge Memorial','Lehi','Judge Memorial HS','Loss',76,54); */
 
 {
     "game_id": 1,

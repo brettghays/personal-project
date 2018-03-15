@@ -34,7 +34,9 @@ class Schedule extends Component {
                     </div>
 
                     <div className="raleway c">
-                        <p>{game.guest_team} @ {game.home_team}</p>
+                        <Link to = {`/schedule/${game.game_id}`}>
+                            <p>{game.guest_team} @ {game.home_team}</p>
+                        </Link>
                     </div>
 
                     <div className="raleway d">
