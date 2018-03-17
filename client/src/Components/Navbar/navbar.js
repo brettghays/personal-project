@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {updateGameCard, updateOriginalMode} from '../../Reducer/reducer';
 
-export default class Navbar extends Component {
+class Navbar extends Component {
+    handleBack() {
+        this.props.updateGameCard('view');
+        this.props.updateOriginalMode('true')
+    }
 
     render(){
         return(
@@ -9,7 +15,7 @@ export default class Navbar extends Component {
             <div className="links-top">
                 <Link to = '/' className = 'links'>Home</Link>
                 <Link to = '/roster' className = 'links'>Roster</Link>
-                <Link to = '/schedule' className = 'links'>Schedule</Link>
+                <Link to = '/schedule' className = 'links' onClick={() => this.handleBack()}>Schedule</Link>
             </div>
 
             <div className="links-bottom">
@@ -20,3 +26,13 @@ export default class Navbar extends Component {
         )
     }
 }
+
+let mapStateToProps = (state) => {
+    const {game_card, original_mode} = state;
+    return {
+       game_card,
+       original_mode
+    };
+};
+
+export default connect(mapStateToProps, {updateGameCard,updateOriginalMode})(Navbar);
