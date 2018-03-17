@@ -181,6 +181,7 @@ class GameCard extends Component {
 
                 <button onClick={view ? () => this.handleEdit() : () => this.handleSave()}>{view ? 'Edit' : 'Save'}</button>
                 <button value={this.props.original_mode} onClick={() => this.handleCancel()}>Cancel</button>
+                <Link to='/schedule'><button value={this.props.original_mode} onClick={() => this.props.updateGameCard('view')}>Back to Schedule</button></Link>
             </div>
         )
     }

@@ -1,1 +1,1 @@
-SELECT * FROM Schedule;
+SELECT * FROM Schedule order by game_id;

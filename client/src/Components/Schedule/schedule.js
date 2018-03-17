@@ -9,7 +9,7 @@ class Schedule extends Component {
     componentDidMount(){
         axios.get('/api/games')
         .then(res => {
-            //console.log(res.data)
+            console.log(res.data)
             //
             //console.log(schedule)
             this.props.updateSchedule(res.data);
