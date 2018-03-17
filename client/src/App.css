@@ -258,3 +258,7 @@ p {
 .childGame {
   display: flex;
 }
+
+button[value='true']{
+  display: none;
+}

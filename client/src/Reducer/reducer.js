@@ -1,6 +1,7 @@
 //setup initial state
 const initialState = {
     schedule: [],
+    original_game: [],
     game_id: '',
     game_date: '',
     game_time: '',
@@ -12,6 +13,8 @@ const initialState = {
     game_result: '',
     home_score: '',
     guest_score: '',
+    game_card: 'view',
+    original_mode: 'true',
     roster: [],
     first_name: '',
     last_name: '',
@@ -28,6 +31,7 @@ const initialState = {
 
 //set up action types
 const UPDATE_SCHEDULE = 'UPDATE_SCHEDULE';
+const UPDATE_ORIGINAL_GAME = 'UPDATE_ORIGINAL_GAME';
 const UPDATE_GAME_ID = 'UPDATE_GAME_ID';
 const UPDATE_GAME_DATE = 'UPDATE_GAME_DATE';
 const UPDATE_GAME_TIME = 'UPDATE_GAME_TIME';
@@ -39,6 +43,8 @@ const UPDATE_GAME_LOCATION = 'UPDATE_GAME_LOCATION';
 const UPDATE_GAME_RESULT = 'UPDATE_GAME_RESULT';
 const UPDATE_HOME_SCORE = 'UPDATE_HOME_SCORE';
 const UPDATE_GUEST_SCORE = 'UPDATE_GUEST_SCORE';
+const UPDATE_GAME_CARD = 'UPDATE_GAME_CARD';
+const UPDATE_ORIGINAL_MODE = 'UPDATE_ORIGINAL_MODE';
 const UPDATE_ROSTER = 'UPDATE_ROSTER';
 const UPDATE_FIRST_NAME = 'UPDATE_FIRST_NAME';
 const UPDATE_LAST_NAME = 'UPDATE_LAST_NAME';
@@ -57,6 +63,9 @@ function reducer(state=initialState, action) {
     switch(action.type){
         case UPDATE_SCHEDULE:
             return Object.assign({}, state, {schedule: action.payload});
+
+        case UPDATE_ORIGINAL_GAME:
+            return Object.assign({}, state, {original_game: action.payload});
 
         case UPDATE_GAME_ID:
             return Object.assign({}, state, {game_id: action.payload});
@@ -90,6 +99,12 @@ function reducer(state=initialState, action) {
 
         case UPDATE_GUEST_SCORE:
             return Object.assign({}, state, {guest_score: action.payload});
+
+        case UPDATE_GAME_CARD:
+            return Object.assign({}, state, {game_card: action.payload});
+
+        case UPDATE_ORIGINAL_MODE:
+            return Object.assign({}, state, {original_mode: action.payload});
 
         case UPDATE_ROSTER:
             return Object.assign({}, state, {roster: action.payload});
@@ -136,6 +151,12 @@ export function updateSchedule (schedule) {
     return {
         type: UPDATE_SCHEDULE,
         payload: schedule
+    }
+}
+export function updateOriginalGame (game) {
+    return {
+        type: UPDATE_ORIGINAL_GAME,
+        payload: game
     }
 }
 export function updateGameId (gameID) {
@@ -202,6 +223,18 @@ export function updateGuestScore (guestScore) {
     return {
         type: UPDATE_GUEST_SCORE,
         payload: guestScore
+    }
+}
+export function updateGameCard (mode) {
+    return {
+        type: UPDATE_GAME_CARD,
+        payload: mode
+    }
+}
+export function updateOriginalMode (mode) {
+    return {
+        type: UPDATE_ORIGINAL_MODE,
+        payload: mode
     }
 }
 export function updateRoster (roster) {

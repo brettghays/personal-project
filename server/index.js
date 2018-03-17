@@ -194,8 +194,8 @@ app.post('/api/games', (req, res) => {
 app.patch('/api/game/:id', (req, res) => {
     const dbInstance = app.get('db');
     const gameID = req.params.id;
-    const {game_date, game_time, home_team, guest_team, game_location, game_result, home_score, guest_score} = req.body;
-    dbInstance.update_game([gameID, game_date, game_time, home_team, guest_team, game_location, game_result, home_score, guest_score])
+    const {game_date, game_time, home_team, home_image, guest_team, guest_image, game_location, game_result, home_score, guest_score} = req.body;
+    dbInstance.update_game([gameID, game_date, game_time, home_team, home_image, guest_team, guest_image, game_location, game_result, home_score, guest_score])
         .then(() => {
             dbInstance.read_game([gameID])
                 .then(game => {
