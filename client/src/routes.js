@@ -7,6 +7,7 @@ import Results from './Components/Results/results';
 import Roster from './Components/Roster/roster';
 import Schedule from './Components/Schedule/schedule';
 import User from './Components/User/user';
+import NewGame from './Components/New Game/newGame';
 
 export default (
     <Switch>
@@ -17,7 +18,8 @@ export default (
             <Route component={Results} path = '/results' />
             <Route component={Roster} path = '/roster' />
             <Route component={Schedule} path = '/schedule' />
-            <Route component={User} path = '/user' />        
+            <Route component={User} path = '/user' /> 
+            <Route component={NewGame} path = '/edit/newGame' />       
         
     </Switch>
 )

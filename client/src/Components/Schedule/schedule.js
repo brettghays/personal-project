@@ -15,8 +15,7 @@ class Schedule extends Component {
             this.props.updateSchedule(res.data);
         })
         .catch(err => console.log(err))
-
-        
+    
     }
 
 //hardcoding response data right now
@@ -56,77 +55,33 @@ class Schedule extends Component {
         })
         return(
             <div className="child-container">
-            <div className="header oswald">Lehi Girls Basketball 2013-2014 Schedule</div>
+                <div className="header oswald">Lehi Girls Basketball 2013-2014 Schedule</div>
             
-            <Navbar />
+                <Navbar />
             
-            <div className="col-header oswald u">Date</div>
-            <div className="col-header oswald v">Time</div>
-            <div className="col-header oswald w">Game</div>
-            <div className="col-header oswald x">Location</div>
-            <div className="col-header oswald y">Score</div>
-            <div className="col-header oswald z">Result</div> 
+                <div className="col-header oswald u">Date</div>
+                <div className="col-header oswald v">Time</div>
+                <div className="col-header oswald w">Game</div>
+                <div className="col-header oswald x">Location</div>
+                <div className="col-header oswald y">Score</div>
+                <div className="col-header oswald z">Result</div> 
 
-            <div className="gameParent">{schedule}</div>
+                <div className="gameParent">{schedule}</div>
 
-            {/* <div className="raleway a">
-                <p>November 26</p>
-                <p>December 6</p>
-            </div> 
-
-            <div className="raleway b">
-                <p>7:00 PM</p>
-                <p>7:00 PM</p>
-            </div>   
-
-            <div className="raleway c">
-                <p>Lehi @ Judge Memorial</p>
-                <p>Lehi @ Spanish Fork</p>
-            </div>  
-
-            <div className="raleway d">
-                <p>Judge Memorial HS</p>
-                <p>Spanish Fork HS</p>
-            </div> 
-
-            <div className="raleway e">
-                <p>Loss</p>
-                <p>Loss</p>
-            </div>
-
-            <div className="raleway f">
-                <p>Test</p>
-                <p>2nd Test</p>
-                <p>Test</p>
-                <p>2nd Test</p>
-                <p>Test</p>
-                <p>2nd Test</p>
-                <p>Test</p>
-                <p>2nd Test</p>
-                <p>Test</p>
-                <p>2nd Test</p>
-                <p>Test</p>
-                <p>2nd Test</p>
-                <p>Test</p>
-                <p>2nd Test</p>
-                <p>Test</p>
-                <p>2nd Test</p>
-                <p>Test</p>
-                <p>2nd Test</p>
-                <p>Test</p>
-                <p>2nd Test</p>
-                <p>Last</p>
-            </div>
-             */}
+                <div className="buttons">
+                    <Link to='/edit/newGame'><button value={this.props.isCoach}>Create New Game</button></Link>
+                </div>
+            
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    const {schedule} = state;
+    const {schedule, isCoach} = state;
     return {
-        schedule
+        schedule,
+        isCoach
     };
 }
 

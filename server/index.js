@@ -181,8 +181,8 @@ app.get('/api/game/:id', (req, res) => {
 
 app.post('/api/games', (req, res) => {
     const dbInstance = app.get('db');
-    const {game_id, game_date, game_time, home_team, guest_team, game_location, game_result, home_score, guest_score} = req.body
-    dbInstance.create_game([game_id, game_date, game_time, home_team, guest_team, game_location, game_result, home_score, guest_score])
+    const {game_id, game_date, game_time, home_team, home_image, guest_team, guest_image, game_location, game_result, home_score, guest_score} = req.body
+    dbInstance.create_game([game_id, game_date, game_time, home_team, home_image, guest_team, guest_image, game_location, game_result, home_score, guest_score])
         .then(game => {
             console.log(game);
             res.status(200).send(game)
