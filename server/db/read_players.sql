@@ -1,1 +1,1 @@
-SELECT * FROM Roster;
+SELECT * FROM Roster ORDER BY player_id;

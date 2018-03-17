@@ -51,12 +51,12 @@ class GameCard extends Component {
             .catch(err => console.log(err))
 
         this.props.updateGameCard('view')
-        this.props.updateOriginalMode('true')
+        this.props.updateOriginalMode(true)
     };
 
     handleEdit() {
         this.props.updateGameCard('edit')
-        this.props.updateOriginalMode('false')
+        this.props.updateOriginalMode(false)
     };
 
     handleCancel(){
@@ -89,7 +89,7 @@ class GameCard extends Component {
 
     handleBack() {
         this.props.updateGameCard('view');
-        this.props.updateOriginalMode('true')
+        this.props.updateOriginalMode(true)
     }
     render() {
         const view = this.props.game_card === 'view';

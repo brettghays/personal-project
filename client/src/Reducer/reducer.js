@@ -1,5 +1,6 @@
 //setup initial state
 const initialState = {
+    isCoach: '',
     schedule: [],
     original_game: [],
     game_id: '',
@@ -14,7 +15,7 @@ const initialState = {
     home_score: '',
     guest_score: '',
     game_card: 'view',
-    original_mode: 'true',
+    original_mode: true,
     roster: [],
     first_name: '',
     last_name: '',

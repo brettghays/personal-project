@@ -259,6 +259,6 @@ p {
   display: flex;
 }
 
-button[value='true']{
+button[value=true]{
   display: none;
 }

@@ -6,7 +6,7 @@ import {updateGameCard, updateOriginalMode} from '../../Reducer/reducer';
 class Navbar extends Component {
     handleBack() {
         this.props.updateGameCard('view');
-        this.props.updateOriginalMode('true')
+        this.props.updateOriginalMode(true)
     }
 
     render(){
