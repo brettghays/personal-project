@@ -74,6 +74,16 @@ class GameCard extends Component {
         this.props.updateHomeTeam(home_team);
         this.props.updateGameResult(game_result);
         document.getElementById("textfield1").value = "";
+        document.getElementById("textfield2").value = "";
+        document.getElementById("textfield3").value = "";
+        document.getElementById("textfield4").value = "";
+        document.getElementById("textfield5").value = "";
+        document.getElementById("textfield6").value = "";
+        document.getElementById("textfield7").value = "";
+        document.getElementById("textfield8").value = "";
+        document.getElementById("textfield9").value = "";
+        document.getElementById("textfield10").value = "";
+        document.getElementById("textfield11").value = "";
         //this.props.updateGameCard('view');
     }
 
@@ -123,7 +133,7 @@ class GameCard extends Component {
                             <div className="row1">
                                 <div className="1">
                                     <div>{this.props.guest_team}</div>
-                                    <div><input type="text" placeholder='Guest Team' onChange={(e) => updateGuestTeam(e.target.value)}/></div>
+                                    <div><input type="text" id="textfield1" placeholder='Guest Team' onChange={(e) => updateGuestTeam(e.target.value)}/></div>
                                 </div>
                                
                                 <div className="2">
@@ -131,13 +141,13 @@ class GameCard extends Component {
                                         Game #{this.props.game_id} {this.props.game_date} - {this.props.game_result}
                                     </div>
                                    <div>
-                                        <input type="text" placeholder='ID' onChange={(e) => updateGameId(e.target.value)}/> <input type="text" placeholder="Date" onChange={(e) => updateGameDate(e.target.value)}/> <input type="text" placeholder="Result" onChange={(e) => updateGameResult(e.target.value)}/>
+                                        <input type="text" id="textfield2"placeholder='ID' onChange={(e) => updateGameId(e.target.value)}/> <input type="text" id="textfield3" placeholder="Date" onChange={(e) => updateGameDate(e.target.value)}/> <input type="text" id="textfield4"placeholder="Result" onChange={(e) => updateGameResult(e.target.value)}/>
                                    </div>    
                                 </div>
                                 
                                 <div className="3">
                                     <div>{this.props.home_team}</div>
-                                    <div><input type="text" placeholder='Home Team' onChange={(e) => updateHomeTeam(e.target.value)}/></div>
+                                    <div><input type="text" id="textfield5" placeholder='Home Team' onChange={(e) => updateHomeTeam(e.target.value)}/></div>
                                 </div>
                                 
                             </div>
@@ -145,7 +155,7 @@ class GameCard extends Component {
                             <div className="row2">
                                 <div className="1">
                                     <img src={this.props.guest_image} alt="Guest Team"/>
-                                    <div><input type="text" placeholder='Guest Image URL' onChange={(e) => updateGuestImage(e.target.value)}/></div>
+                                    <div><input type="text" id="textfield6" placeholder='Guest Image URL' onChange={(e) => updateGuestImage(e.target.value)}/></div>
                                 </div>
                                 
                                 
@@ -153,7 +163,7 @@ class GameCard extends Component {
 
                                 <div className="3">
                                     <img src={this.props.home_image} alt="Home Team"/>
-                                    <div><input type="text" placeholder='Home Image URL' onChange={(e) => updateHomeImage(e.target.value)}/></div>
+                                    <div><input type="text" id="textfield7" placeholder='Home Image URL' onChange={(e) => updateHomeImage(e.target.value)}/></div>
                                 </div>
                                 
                             </div>
@@ -161,22 +171,22 @@ class GameCard extends Component {
                             <div className="row3">
                                 <div className="1">
                                     <div>{this.props.guest_score}</div>
-                                    <div><input type="text" placeholder='Guest Score' onChange={(e) => updateGuestScore(e.target.value)}/></div>   
+                                    <div><input type="text" id="textfield8" placeholder='Guest Score' onChange={(e) => updateGuestScore(e.target.value)}/></div>   
                                 </div>
                                 
                                 <div className="2">
                                     <p>Final Score</p>
                                     <div>
                                         <p>{this.props.game_time}</p>
-                                        <input type="text" placeholder='Game Time' onChange={(e) => updateGameTime(e.target.value)}/>
+                                        <input type="text" id="textfield9" placeholder='Game Time' onChange={(e) => updateGameTime(e.target.value)}/>
                                         <p>{this.props.game_location}</p>
-                                        <input type="text" id="textfield1" placeholder='Location' onChange={(e) => updateGameLocation(e.target.value)}/>
+                                        <input type="text" id="textfield10" placeholder='Location' onChange={(e) => updateGameLocation(e.target.value)}/>
                                     </div>  
                                 </div>
 
                                 <div className="3">
                                     <div>{this.props.home_score}</div>
-                                    <div><input type="text" placeholder='Home Score' onChange={(e) => updateHomeScore(e.target.value)}/></div>    
+                                    <div><input type="text"  id="textfield11" placeholder='Home Score' onChange={(e) => updateHomeScore(e.target.value)}/></div>    
                                 </div>    
                             </div>
                         </div>
