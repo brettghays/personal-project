@@ -12,7 +12,7 @@ export default (
     <Switch>
         
             <Route component={Landing} exact path = '/' />
-            <Route component={GameCard} path = '/schedule/:id' />
+            <Route component={GameCard} path = '/schedule/:id/:edit?' />
             <Route component={PlayerCard} path = '/roster/:id' />
             <Route component={Results} path = '/results' />
             <Route component={Roster} path = '/roster' />
