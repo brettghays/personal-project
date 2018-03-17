@@ -77,6 +77,10 @@ class GameCard extends Component {
         //this.props.updateGameCard('view');
     }
 
+    handleBack() {
+        this.props.updateGameCard('view');
+        this.props.updateOriginalMode('true')
+    }
     render() {
         const view = this.props.game_card === 'view';
         const {updateGameId, updateGameDate, updateGameLocation, updateGameTime, updateGuestImage, updateGuestScore, updateGuestTeam, updateHomeImage, updateHomeScore, updateHomeTeam, updateGameResult} = this.props;
@@ -181,7 +185,7 @@ class GameCard extends Component {
 
                 <button onClick={view ? () => this.handleEdit() : () => this.handleSave()}>{view ? 'Edit' : 'Save'}</button>
                 <button value={this.props.original_mode} onClick={() => this.handleCancel()}>Cancel</button>
-                <Link to='/schedule'><button value={this.props.original_mode} onClick={() => this.props.updateGameCard('view')}>Back to Schedule</button></Link>
+                <Link to='/schedule'><button value={this.props.original_mode} onClick={() => this.handleBack()}>Back to Schedule</button></Link>
             </div>
         )
     }
