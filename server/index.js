@@ -37,7 +37,8 @@ passport.serializeUser(function(user, done) {
     done(null, {
         id: user.id,
         firstname: user.name.givenName || '',
-        lastname: user.name.familyName || ''
+        lastname: user.name.familyName || '',
+        email: user._json.name || ''
     });
   });
   
@@ -67,7 +68,7 @@ app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
             if(user.length && user[0].session_id){
                 return done(null, user);
             } else{
-                dbInstance.create_user([passportUser.id, passportUser.firstname, passportUser.lastname])
+                dbInstance.create_user([passportUser.id, passportUser.firstname, passportUser.lastname, passportUser.email])
                 .then(user => {
                     console.log('User created in db: ',user);
                     //console.log('profile, ', profile)
@@ -75,7 +76,9 @@ app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
                 })
             }
         })
-    res.redirect('http://localhost:3000/#/')//this works
+        console.log('this is req.user', req.user);
+        console.log('this is passport.user', req.session.passport.user)
+    res.redirect('http://localhost:3000/#/user')//this works
 });
 
 app.get('/api/auth/me', (req, res, next) => {
@@ -87,9 +90,9 @@ app.get('/api/auth/me', (req, res, next) => {
   })
 
 app.get('/api/auth/logout', (req, res) => {
-    console.log(req.session.passport.user)
+    console.log('this is passport.user', req.session.passport.user)
     req.logOut();
-    console.log('Successful logout!',req.session.passport)
+    console.log('Successful logout!',req.session.passport.user)
     return res.redirect('http://localhost:3000/#/');
     
   })
