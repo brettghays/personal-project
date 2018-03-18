@@ -1,6 +1,13 @@
+import axios from 'axios';
 //setup initial state
 const initialState = {
-    isCoach: false,
+    //auth props
+    user: {},
+    firstname: '',
+    lastname: '',
+    email: '',
+    isCoach: 'false',
+    //schedule props
     schedule: [],
     original_game: [],
     game_id: '',
@@ -15,7 +22,9 @@ const initialState = {
     home_score: '',
     guest_score: '',
     //game_card: 'view',
+    //schedule and roster prop
     edit_mode: false,
+    //roster props
     roster: [],
     first_name: '',
     last_name: '',
@@ -31,7 +40,13 @@ const initialState = {
 }
 
 //set up action types
+//Auth action types
+const GET_USER_INFO = 'GET_USER_INFO';
+const UPDATE_FIRSTNAME = 'UPDATE_FIRSTNAME';
+const UPDATE_LASTNAME = 'UPDATE_LASTNAME';
+const UPDATE_EMAIL = 'UPDATE_EMAIL';
 const UPDATE_ISCOACH = "UPDATE_ISCOACH";
+//Schedule action types
 const UPDATE_SCHEDULE = 'UPDATE_SCHEDULE';
 const UPDATE_ORIGINAL_GAME = 'UPDATE_ORIGINAL_GAME';
 const UPDATE_GAME_ID = 'UPDATE_GAME_ID';
@@ -46,7 +61,9 @@ const UPDATE_GAME_RESULT = 'UPDATE_GAME_RESULT';
 const UPDATE_HOME_SCORE = 'UPDATE_HOME_SCORE';
 const UPDATE_GUEST_SCORE = 'UPDATE_GUEST_SCORE';
 //const UPDATE_GAME_CARD = 'UPDATE_GAME_CARD';
+//Schedule/Roster action type
 const UPDATE_EDIT_MODE = 'UPDATE_EDIT_MODE';
+//Roster action types
 const UPDATE_ROSTER = 'UPDATE_ROSTER';
 const UPDATE_FIRST_NAME = 'UPDATE_FIRST_NAME';
 const UPDATE_LAST_NAME = 'UPDATE_LAST_NAME';
@@ -63,9 +80,23 @@ const UPDATE_NICKNAME = 'UPDATE_NICKNAME';
 //set up function reducer
 function reducer(state=initialState, action) {
     switch(action.type){
-        case UPDATE_ISCOACH:
-            return Object.assign({}, state, {schedule: action.payload});
+        //auth cases
+        case GET_USER_INFO + '_FULFILLED':
+            return Object.assign({}, state, {user: action.payload});
+        
+        case UPDATE_FIRSTNAME:
+            return Object.assign({}, state, {firstname: action.payload});
 
+        case UPDATE_LASTNAME:
+            return Object.assign({}, state, {lastname: action.payload});
+
+        case UPDATE_EMAIL:
+            return Object.assign({}, state, {email: action.payload});
+
+        case UPDATE_ISCOACH:
+            return Object.assign({}, state, {isCoach: action.payload});
+
+        //schedule cases
         case UPDATE_SCHEDULE:
             return Object.assign({}, state, {schedule: action.payload});
 
@@ -108,9 +139,11 @@ function reducer(state=initialState, action) {
         /* case UPDATE_GAME_CARD:
             return Object.assign({}, state, {game_card: action.payload}); */
 
+        //Schedule/Roster case
         case UPDATE_EDIT_MODE:
             return Object.assign({}, state, {edit_mode: action.payload});
 
+        //Roster cases
         case UPDATE_ROSTER:
             return Object.assign({}, state, {roster: action.payload});
 
@@ -152,12 +185,42 @@ function reducer(state=initialState, action) {
 }
 
 //set up action creators
+//auth functions
+export function getUserInfo() {
+    const userInfo = axios.get('/api/auth/me').then( res => {
+        return res.data
+    })
+    console.log(userInfo)
+    return {
+        type: GET_USER_INFO,
+        payload: userInfo
+    }
+}
+export function updateFirstname (firstname) {
+    return {
+        type: UPDATE_FIRSTNAME,
+        payload: firstname
+    }
+}
+export function updateLastname (lastname) {
+    return {
+        type: UPDATE_LASTNAME,
+        payload: lastname
+    }
+}
+export function updateEmail (email) {
+    return {
+        type: UPDATE_EMAIL,
+        payload: email
+    }
+}
 export function updateIsCoach (status) {
     return {
         type: UPDATE_ISCOACH,
         payload: status
     }
 }
+//schedule functions
 export function updateSchedule (schedule) {
     return {
         type: UPDATE_SCHEDULE,
@@ -242,12 +305,14 @@ export function updateGuestScore (guestScore) {
         payload: mode
     }
 } */
+//Schedule/Roster Function
 export function updateEditMode (mode) {
     return {
         type: UPDATE_EDIT_MODE,
         payload: mode
     }
 }
+//Roster Function
 export function updateRoster (roster) {
     return {
         type: UPDATE_ROSTER,
