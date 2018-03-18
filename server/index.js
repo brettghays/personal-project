@@ -72,8 +72,10 @@ app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
                 .then(user => {
                     console.log('User created in db: ',user);
                     //console.log('profile, ', profile)
+                    
                     return done(null, user)
                 })
+                
             }
         })
         console.log('this is req.user', req.user);
@@ -82,11 +84,12 @@ app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
 });
 
 app.get('/api/auth/me', (req, res, next) => {
+    
     if (!req.session.passport.user) {
       return res.status(401).send('Log in required');
     } else {
-      //res.status(200).send(req.session.passport.user);
-      return res.redirect('http://localhost:3000/#/user/');
+      res.status(200).send(req.session.passport.user);
+      //return res.redirect('http://localhost:3000/#/user/');
     }
   })
 
@@ -98,7 +101,22 @@ app.get('/api/auth/logout', (req, res) => {
     
   })
 
+  app.patch('/api/user/:id', (req, res) => {
+    const dbInstance = app.get('db');
+    const {firstname, lastname, iscoach} = req.body;
+    const sessionID = req.params.id;
 
+    dbInstance.update_user([sessionID, firstname, lastname, iscoach])
+        .then(() => {
+            dbInstance.read_player([sessionID])
+                .then(user => {
+                    console.log(user[0]);
+                    res.status(200).send(user[0])
+                })
+                .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
+});
 
 //Roster Endpoints
 
