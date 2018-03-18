@@ -208,9 +208,9 @@ class GameCard extends Component {
                     )
                 }
 
-                <Link to={`/schedule/${this.props.game_id}/:edit?`}><button value={this.props.isCoach}onClick={!edit ? () => this.handleEdit(): () => this.handleSave()}>{!edit ? 'Edit' : 'Save'}</button></Link>
-                <Link to='/schedule'><button value={this.props.isCoach} onClick={() => this.handleDelete()}>Delete Game</button></Link>
-                <button value={this.props.isCoach ? edit : this.props.edit_mode} onClick={() => this.handleCancel()}>Cancel</button>
+                <Link to={`/schedule/${this.props.game_id}/:edit?`}><button value={this.props.isCoach}onClick={!edit ? () => this.handleEdit() : () => this.handleSave()}>{!edit ? 'Edit' : 'Save'}</button></Link>
+                <Link to='/schedule'><button value={this.props.isCoach} onClick={!edit ? () => this.handleDelete() : () => this.handleCancel()}>{!edit ? 'Delete Game' : 'Cancel'}</button></Link>
+                {/* <button value={this.props.isCoach ? edit : this.props.edit_mode} onClick={() => this.handleCancel()}>Cancel</button> */}
             </div>
         )
     }

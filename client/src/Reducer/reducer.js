@@ -1,6 +1,6 @@
 //setup initial state
 const initialState = {
-    isCoach: true,
+    isCoach: false,
     schedule: [],
     original_game: [],
     game_id: '',
