@@ -101,7 +101,19 @@ app.get('/api/auth/logout', (req, res) => {
     
   })
 
-  /* app.patch('/api/user/:id', (req, res) => {
+  app.get('/api/user', (req, res) => {
+    const dbInstance = app.get('db');
+    const { session } = req;
+    dbInstance.read_user([session.passport.user.id])
+        .then(user => {
+            console.log(user[0]);
+            res.status(200).send(user[0]);
+        })
+        .catch(err => console.log(err));
+})
+
+
+  app.patch('/api/user/:id', (req, res) => {
     const dbInstance = app.get('db');
     const {firstname, lastname, iscoach} = req.body;
     const sessionID = req.params.id;
@@ -116,7 +128,7 @@ app.get('/api/auth/logout', (req, res) => {
                 .catch(err => console.log(err))
         })
         .catch(err => console.log(err))
-}); */
+});
 
 //Roster Endpoints
 

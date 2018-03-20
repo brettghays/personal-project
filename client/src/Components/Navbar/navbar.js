@@ -14,6 +14,7 @@ export default class Navbar extends Component {
             </div>
 
             <div className="links-bottom">
+                <Link to = '/user' className = 'links'>Profile</Link>
                 <a href = 'http://localhost:3001/api/auth' className = 'links'>Register / Login</a>
                 <a href = 'http://localhost:3001/api/auth/logout' className = 'links'>Signout</a>
             </div>

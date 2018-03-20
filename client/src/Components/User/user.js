@@ -2,19 +2,21 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import Navbar from '../Navbar/navbar';
 import {getUserInfo, updateSessionID, updateFirstname, updateLastname, updateEmail, updateIsCoach} from '../../Reducer/reducer';
 
 class User extends Component {
     componentDidMount() {
-        axios.get('/api/auth/me')
+        axios.get('/api/user')
             .then( res => {
                 console.log(res.data)
-                const {id, firstname, lastname, email} = res.data
+                const {id, firstname, lastname, email, iscoach} = res.data
 
                 this.props.updateSessionID(id);
                 this.props.updateFirstname(firstname);
                 this.props.updateLastname(lastname);
                 this.props.updateEmail(email);
+                this.props.updateIsCoach(iscoach);
             })
             .catch(err => console.log(err))
     }
@@ -41,11 +43,12 @@ class User extends Component {
             <div className="userContainer">
                 <div className="header1 oswald">Create User Profile</div>
 
-                <div className="navbar oswald"></div>
+                <Navbar />
 
-                <div className="profileCard raleway">
+                <div className="gameCard raleway">
                     <div>
                         <span><input required type="text" placeholder='First Name' value={this.props.firstname} onChange={(e) => updateFirstname(e.target.value)}/></span> 
+                        <div></div>
                         <span><input required type="text" placeholder='Last Name' value={this.props.lastname} onChange={(e) => updateLastname(e.target.value)}/></span>
                     </div>
                     
@@ -54,12 +57,12 @@ class User extends Component {
                     </div>
 
                     <div>
-                        <input id='isCoach' type="checkbox" value={!this.props.isCoach || this.props.isCoach === 'true' ? false : true}onChange={(e) => updateIsCoach(e.target.value)}/>
+                        <input id='isCoach' type="checkbox" value={!this.props.isCoach || this.props.isCoach === 'false' ? true : false}onChange={(e) => updateIsCoach(e.target.value)}/>
                         <label htmlFor="isCoach">Are you a coach?</label>
                     </div>
                     
                     <Link to='/'><button onClick = {() => this.handleSubmit()}>Submit Profile</button></Link>
-                    <Link to = '/'><button>Returning User</button></Link>
+                    {/* <Link to = '/'><button>Returning User</button></Link> */}
                 </div>
             </div>
         )
