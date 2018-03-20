@@ -7,20 +7,18 @@ import {updateGameId, updateGuestTeam, updateHomeTeam, updateGameDate, updateHom
 import '../Game Card/gameCard.css';
 
 class NewGame extends Component {
-    componentDidMount(){
-        const {game_id, game_date, game_location, game_time, guest_image, guest_score, guest_team, home_image, home_score, home_team, game_result} = this.props;
-
-                this.props.updateGameDate('');
-                this.props.updateGameId('');
-                this.props.updateGameLocation('');
-                this.props.updateGameTime('');
-                this.props.updateGuestImage('');
-                this.props.updateGuestScore('');
-                this.props.updateGuestTeam('');
-                this.props.updateHomeImage('');
-                this.props.updateHomeScore('');
-                this.props.updateHomeTeam('');
-                this.props.updateGameResult('');
+    componentDidMount() {
+        this.props.updateGameDate('');
+        this.props.updateGameId('');
+        this.props.updateGameLocation('');
+        this.props.updateGameTime('');
+        this.props.updateGuestImage('');
+        this.props.updateGuestScore('');
+        this.props.updateGuestTeam('');
+        this.props.updateHomeImage('');
+        this.props.updateHomeScore('');
+        this.props.updateHomeTeam('');
+        this.props.updateGameResult('');
     }
 
     handleSave() {
@@ -158,7 +156,7 @@ class NewGame extends Component {
                         </div>
 
                 <Link to={`/schedule/`}><button value={this.props.isCoach} onClick={() => this.handleSave()}>Save Game</button></Link>
-                <button value={this.props.isCoach} onClick={() => this.handleCancel()}>Cancel</button>
+                <button value={this.props.isCoach} onClick={() => this.handleCancel()}>Cancel Changes</button>
             </div>
         )
     }

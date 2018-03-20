@@ -10,7 +10,7 @@ class PlayerCard extends Component {
     componentDidMount() {
         axios.get(`/api/player/${this.props.match.params.id}`)
             .then(res => {
-                //console.log(res.data)
+                console.log(res.data)
                 const {player_id, first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_nickname, player_unique_fact} = res.data;
 
                 this.props.updatePlayerImage(player_image);
@@ -31,6 +31,7 @@ class PlayerCard extends Component {
     }
 
     handleSave() {
+        const {player_nickname} = this.props;
         const body = {
             player_id: this.props.player_id,
             first_name: this.props.first_name,
@@ -40,7 +41,13 @@ class PlayerCard extends Component {
             position: this.props.position,
             roster_years: this.props.roster_years,
             player_image: this.props.player_image,
+            player_fav_food: this.props.player_fav_food,
+            player_fav_quote: this.props.player_fav_quote,
+            player_unique_fact: this.props.player_unique_fact,
+            player_nickname: this.props.player_nickname
         }
+        console.log(player_nickname)
+        console.log('This is the body: ',body);
         axios.patch(`/api/player/${this.props.player_id}`, body)
             .then(res => {
                 console.log(res.data)
@@ -56,6 +63,10 @@ class PlayerCard extends Component {
         document.getElementById("textfield5").value = "";
         document.getElementById("textfield6").value = "";
         document.getElementById("textfield7").value = "";
+        document.getElementById("textfield8").value = "";
+        document.getElementById("textfield9").value = "";
+        document.getElementById("textfield10").value = "";
+        document.getElementById("textfield11").value = "";
     };
 
     handleEdit() {
@@ -74,6 +85,10 @@ class PlayerCard extends Component {
         this.props.updatePosition(position);
         this.props.updatePlayerHeight(player_height);
         this.props.updateRosterYears(roster_years);
+        this.props.updateFavFood(player_fav_food);
+        this.props.updateFavQuote(player_fav_quote);
+        this.props.updateNickname(player_nickname);
+        this.props.updateFact(player_unique_fact);
         document.getElementById("textfield1").value = "";
         document.getElementById("textfield2").value = "";
         document.getElementById("textfield3").value = "";
@@ -81,6 +96,10 @@ class PlayerCard extends Component {
         document.getElementById("textfield5").value = "";
         document.getElementById("textfield6").value = "";
         document.getElementById("textfield7").value = "";
+        document.getElementById("textfield8").value = "";
+        document.getElementById("textfield9").value = "";
+        document.getElementById("textfield10").value = "";
+        document.getElementById("textfield11").value = "";
         //this.props.updateGameCard('view');
     }
 
@@ -108,15 +127,21 @@ class PlayerCard extends Component {
                     !edit
                     ? ( 
                         <div>
-                        <div className="img">
-                            <img src={this.props.player_image} alt=""/>
-                        </div>
-                        <div className="info">
-                            <div className="name">{this.props.first_name} {this.props.last_name}</div>
-                            <div className="num position">{this.props.player_number} | {this.props.position}</div>
-                            <div className="height">Height: {this.props.player_height}</div>
-                            <div className="class">Varsity Roster Years: {this.props.roster_years}</div>
-                        </div>
+                            <div className="img">
+                                <img src={this.props.player_image} alt=""/>
+                            </div>
+                            <div className="info">
+                                <div className="name">{this.props.first_name} {this.props.last_name}</div>
+                                <div className="num position">{this.props.player_number} | {this.props.position}</div>
+                                <div className="height">Height: {this.props.player_height}</div>
+                                <div className="class">Varsity Roster Years: {this.props.roster_years}</div>
+                            </div>
+                            <div className="favorites">
+                                <div className="nickname">Nickname: {this.props.player_nickname}</div>
+                                <div className="food">Favorite Food: {this.props.player_fav_food}</div>
+                                <div className="fact">Unique Fact About {this.props.first_name}:        {this.props.player_unique_fact}</div>
+                                <div className="quote">Favorite Quote: {this.props.quote}</div>
+                            </div>
                         </div>
                     )
                     : (
@@ -134,6 +159,16 @@ class PlayerCard extends Component {
                                 <input disabled={!this.props.isCoach} type="text" id="textfield6" placeholder='Height' onChange={(e) => updatePlayerHeight(e.target.value)}/>
                                 <div className="class">Varsity Roster Years: {this.props.roster_years}</div>
                                 <input disabled={!this.props.isCoach} type="text" id="textfield7" placeholder='Roster Years' onChange={(e) => updateRosterYears(e.target.value)}/>
+                            </div>
+                            <div className="favorites">
+                                <div className="nickname">Nickname: {this.props.player_nickname}</div>
+                                <input disabled={!this.props.isCoach} type="text" id="textfield8" placeholder='Nickname' onChange={(e) => updateNickname(e.target.value)}/>
+                                <div className="food">Favorite Food: {this.props.player_fav_food}</div>
+                                <input disabled={!this.props.isCoach} type="text" id="textfield9" placeholder='Favorite Food' onChange={(e) => updateFavFood(e.target.value)}/>
+                                <div className="fact">Unique Fact About {this.props.first_name}: {this.props.player_unique_fact}</div>
+                                <input disabled={!this.props.isCoach} type="text" id="textfield10" placeholder='Unique Fact' onChange={(e) => updateFact(e.target.value)}/>
+                                <div className="quote">Favorite Quote: {this.props.player_fav_quote}</div>
+                                <input disabled={!this.props.isCoach} type="text" id="textfield11" placeholder='Favorite Quote' onChange={(e) => updateFavQuote(e.target.value)}/>
                             </div>
                         </div>
                     )

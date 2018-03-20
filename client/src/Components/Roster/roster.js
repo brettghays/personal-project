@@ -61,45 +61,19 @@ class Roster extends Component {
 
             <div className="rosterParent">{roster}</div>
 
-            {/* <div className="raleway a">
-                <p>4</p>
-                <p>5</p>
-            </div> 
-
-            <div className="raleway b">
-                <p>Kaylie Bartholomew</p>
-                <p>Hadlee Labrum</p>
-            </div>   
-
-            <div className="raleway c">
-                <p>5'5"</p>
-                <p>5'6"</p>
-            </div>  
-
-            <div className="raleway d">
-                <p>Guard</p>
-                <p>Guard</p>
-            </div> 
-
-            <div className="raleway e">
-                <p>Senior</p>
-                <p>Junior</p>
-            </div>
-
-            <div className="raleway f">
-                <p>2012, 2013</p>
-                <p>2013</p>
-            </div> */}
-            
+            <div className="buttons">
+                    <Link to='/edit/newPlayer'><button value={this.props.isCoach}>Create New Player</button></Link>
+                </div>
             </div>
         )
     }
 }
 
 let mapStateToProps = (state) => {
-    const {roster} = state;
+    const {roster, isCoach} = state;
     return {
-        roster
+        roster,
+        isCoach
     };
 };
 
