@@ -37,7 +37,7 @@ passport.serializeUser(function(user, done) {
     done(null, {
         id: user.id,
         firstname: user.name.givenName || '',
-        lastname: user.name.familyName || '',
+        lastname: user.lastname || '',
         email: user._json.name || ''
     });
   });
@@ -101,7 +101,7 @@ app.get('/api/auth/logout', (req, res) => {
     
   })
 
-  app.patch('/api/user/:id', (req, res) => {
+  /* app.patch('/api/user/:id', (req, res) => {
     const dbInstance = app.get('db');
     const {firstname, lastname, iscoach} = req.body;
     const sessionID = req.params.id;
@@ -116,7 +116,7 @@ app.get('/api/auth/logout', (req, res) => {
                 .catch(err => console.log(err))
         })
         .catch(err => console.log(err))
-});
+}); */
 
 //Roster Endpoints
 
