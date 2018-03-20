@@ -33,7 +33,7 @@ class Roster extends Component {
                     </div>
 
                     <div className="raleway d">
-                        <p>{player.postion}</p>
+                        <p>{player.position}</p>
                     </div>
 
                     <div className="raleway e">

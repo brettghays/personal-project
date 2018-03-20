@@ -8,13 +8,13 @@ import {updateSchedule} from '../../Reducer/reducer';
 class Schedule extends Component {
     componentDidMount(){
         axios.get('/api/games')
-        .then(res => {
-            console.log(res.data)
+            .then(res => {
+                console.log(res.data)
             //
             //console.log(schedule)
-            this.props.updateSchedule(res.data);
-        })
-        .catch(err => console.log(err))
+                this.props.updateSchedule(res.data);
+            })
+            .catch(err => console.log(err))
     
     }
 

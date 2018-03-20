@@ -7,7 +7,7 @@ const initialState = {
     firstname: '',
     lastname: '',
     email: '',
-    isCoach: 'false',
+    isCoach: true,
     //schedule props
     schedule: [],
     original_game: [],
@@ -27,6 +27,8 @@ const initialState = {
     edit_mode: false,
     //roster props
     roster: [],
+    original_player: [],
+    player_id: '',
     first_name: '',
     last_name: '',
     player_number: '',
@@ -67,6 +69,8 @@ const UPDATE_GUEST_SCORE = 'UPDATE_GUEST_SCORE';
 const UPDATE_EDIT_MODE = 'UPDATE_EDIT_MODE';
 //Roster action types
 const UPDATE_ROSTER = 'UPDATE_ROSTER';
+const UPDATE_ORIGINAL_PLAYER = 'UPDATE_ORIGINAL_PLAYER';
+const UPDATE_PLAYER_ID = 'UPDATE_PLAYER_ID';
 const UPDATE_FIRST_NAME = 'UPDATE_FIRST_NAME';
 const UPDATE_LAST_NAME = 'UPDATE_LAST_NAME';
 const UPDATE_PLAYER_NUMBER = 'UPDATE_PLAYER_NUMBER';
@@ -151,6 +155,12 @@ function reducer(state=initialState, action) {
         //Roster cases
         case UPDATE_ROSTER:
             return Object.assign({}, state, {roster: action.payload});
+
+        case UPDATE_ORIGINAL_PLAYER:
+            return Object.assign({}, state, {original_player: action.payload});
+
+        case UPDATE_PLAYER_ID:
+            return Object.assign({}, state, {player_id: action.payload});
 
         case UPDATE_FIRST_NAME:
             return Object.assign({}, state, {first_name: action.payload});
@@ -328,6 +338,18 @@ export function updateRoster (roster) {
     return {
         type: UPDATE_ROSTER,
         payload: roster
+    }
+}
+export function updateOriginalPlayer (player) {
+    return {
+        type: UPDATE_ORIGINAL_PLAYER,
+        payload: player
+    }
+}
+export function updatePlayerID (id) {
+    return {
+        type: UPDATE_PLAYER_ID,
+        payload: id
     }
 }
 export function updateFirstName (firstName) {

@@ -8,18 +8,20 @@ import Roster from './Components/Roster/roster';
 import Schedule from './Components/Schedule/schedule';
 import User from './Components/User/user';
 import NewGame from './Components/New Game/newGame';
+import NewPlayer from './Components/New Player/newPlayer';
 
 export default (
     <Switch>
         
             <Route component={Landing} exact path = '/' />
             <Route component={GameCard} path = '/schedule/:id/:edit?' />
-            <Route component={PlayerCard} path = '/roster/:id' />
+            <Route component={PlayerCard} path = '/roster/:id/:edit?' />
             <Route component={Results} path = '/results' />
             <Route component={Roster} path = '/roster' />
             <Route component={Schedule} path = '/schedule' />
             <Route component={User} path = '/user' /> 
-            <Route component={NewGame} path = '/edit/newGame' />       
+            <Route component={NewGame} path = '/edit/newGame' />
+            <Route component={NewPlayer} path = '/edit/newPlayer' />
         
     </Switch>
 )

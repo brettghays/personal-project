@@ -142,9 +142,9 @@ app.get('/api/player/:id', (req, res) => {
 
 app.post('/api/players', (req, res) => {
     const dbInstance = app.get('db');
-    const {first_name,last_name,player_number,player_height,postion,roster_years,player_image,player_fav_food,player_fav_quote,player_unique_fact,player_nickName} = req.body;
+    const {first_name,last_name,player_number,player_height,position,roster_years,player_image,player_fav_food,player_fav_quote,player_unique_fact,player_nickName} = req.body;
     
-    dbInstance.create_player([first_name,last_name,player_number,player_height,postion,roster_years,player_image,player_fav_food,player_fav_quote,player_unique_fact,player_nickName])
+    dbInstance.create_player([first_name,last_name,player_number,player_height,position,roster_years,player_image,player_fav_food,player_fav_quote,player_unique_fact,player_nickName])
         .then(player => {
             console.log(player);
             res.status(200).send(player)
@@ -154,10 +154,10 @@ app.post('/api/players', (req, res) => {
 
 app.patch('/api/player/:id', (req, res) => {
     const dbInstance = app.get('db');
-    const {first_name,last_name,player_number,player_height,postion,roster_years,player_image,player_fav_food,player_fav_quote,player_unique_fact,player_nickName} = req.body;
+    const {first_name,last_name,player_number,player_height,position,roster_years,player_image,player_fav_food,player_fav_quote,player_unique_fact,player_nickName} = req.body;
     const playerID = req.params.id;
 
-    dbInstance.update_player([playerID, first_name,last_name,player_number,player_height,postion,roster_years,player_image,player_fav_food,player_fav_quote,player_unique_fact,player_nickName])
+    dbInstance.update_player([playerID, first_name,last_name,player_number,player_height,position,roster_years,player_image,player_fav_food,player_fav_quote,player_unique_fact,player_nickName])
         .then(() => {
             dbInstance.read_player([playerID])
                 .then(player => {
