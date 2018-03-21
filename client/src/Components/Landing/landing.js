@@ -1,12 +1,19 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import teamPic from '../../Assets/jvVarsity.jpg'
 import Navbar from '../Navbar/navbar';
 import Lehi from '../../Assets/lehi-logo.jpg';
 import Judge from '../../Assets/judge-memorial-logo.jpg';
 import Kaylie from '../../Assets/Kaylie.jpg';
+import {updateIsCoach} from '../../Reducer/reducer';
 
-export default class Landing extends Component {
+class Landing extends Component {
+    componentDidMount(){
+        if((!this.props.firstname && !this.props.lastname) || !this.props.sessionid) {
+            this.props.updateIsCoach(false);
+        }
+    }
     render() {
         return(
             <div className="container">
@@ -52,3 +59,15 @@ export default class Landing extends Component {
         )
     }
 }
+
+let mapStateToProps = (state) => {
+    const {sessionid, firstname, lastname, isCoach} = state;
+    return (
+        sessionid,
+        firstname,
+        lastname,
+        isCoach
+    )
+}
+
+export default connect(mapStateToProps, {updateIsCoach})(Landing)

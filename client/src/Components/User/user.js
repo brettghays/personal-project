@@ -10,9 +10,9 @@ class User extends Component {
         axios.get('/api/user')
             .then( res => {
                 console.log(res.data)
-                const {id, firstname, lastname, email, iscoach} = res.data
+                const {session_id, firstname, lastname, email, iscoach} = res.data
 
-                this.props.updateSessionID(id);
+                this.props.updateSessionID(session_id);
                 this.props.updateFirstname(firstname);
                 this.props.updateLastname(lastname);
                 this.props.updateEmail(email);
@@ -57,7 +57,7 @@ class User extends Component {
                     </div>
 
                     <div>
-                        <input id='isCoach' type="checkbox" value={!this.props.isCoach || this.props.isCoach === 'false' ? true : false}onChange={(e) => updateIsCoach(e.target.value)}/>
+                        <input id='isCoach' type="checkbox" value={!this.props.isCoach || this.props.isCoach === 'false' ? true : false}onChange={(e) => updateIsCoach(e.target.value)} checked = {this.props.isCoach}/>
                         <label htmlFor="isCoach">Are you a coach?</label>
                     </div>
                     
