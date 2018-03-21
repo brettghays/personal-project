@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
     , express = require('express')
     , massive = require('massive')
     , passport = require('passport')
+    , path = require('path')
     , session = require('express-session')
     , strategy = require('./strategy')
     , port = process.env.PORT || 3001;
@@ -80,7 +81,7 @@ app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
         })
         console.log('this is req.user', req.user);
         console.log('this is passport.user', req.session.passport.user)
-    res.redirect('http://localhost:3000/#/user')//this works
+    res.redirect('http://localhost:3000/#/')//this works
 });
 
 app.get('/api/auth/me', (req, res, next) => {
@@ -252,6 +253,13 @@ app.delete('/api/game/:id', (req, res) => {
         .catch(err => console.log(err));
 });
 
+//Hosting
+app.use( express.static( `${__dirname}/../build` ) );
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+  })
+
+//Run Server
 app.listen(port, () => {
     console.log(`Welcome to the Big Show on ${port}!`)
 })
