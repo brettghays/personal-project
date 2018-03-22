@@ -254,10 +254,10 @@ app.delete('/api/game/:id', (req, res) => {
 });
 
 //Hosting
-app.use( express.static( `${__dirname}/../build` ) );
-app.get('*', (req, res)=>{
+app.use( express.static( `${__dirname}/../client/build` ) );
+/* app.get('/', (req, res)=>{
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
-  })
+  }) */
 
 //Run Server
 app.listen(port, () => {
