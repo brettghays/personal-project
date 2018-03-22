@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
     , path = require('path')
     , session = require('express-session')
     , strategy = require('./strategy')
-    , port = process.env.PORT || 3001;
+    , port = process.env.PORT || 80;
 
 const app = express();
 
