@@ -52,7 +52,7 @@ passport.serializeUser(function(user, done) {
 
 app.get('/api/auth', passport.authenticate('auth0', {
   successRedirect: '/api/auth/login', //this should point to the user component to set the rest of their info
-  failureRedirect: 'http://localhost:3000/#/',
+  failureRedirect: '/#/',
   failureFlash: true
 }));
 
@@ -81,7 +81,7 @@ app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
         })
         console.log('this is req.user', req.user);
         console.log('this is passport.user', req.session.passport.user)
-    res.redirect('http://localhost:3000/#/')//this works
+    res.redirect('/#/')//this works
 });
 
 app.get('/api/auth/me', (req, res, next) => {
@@ -98,7 +98,7 @@ app.get('/api/auth/logout', (req, res) => {
     console.log('this is passport.user', req.session.passport.user)
     req.logOut();
     console.log('Successful logout!',req.session.passport.user)
-    return res.redirect('http://localhost:3000/#/');
+    return res.redirect('/#/');
     
   })
 
