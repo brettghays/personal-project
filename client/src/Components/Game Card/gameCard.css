@@ -40,16 +40,16 @@
     height: 1fr;
 }
 
-.1 {
+.one {
     grid-column: col-start 2 / span 4;
     
 }
 
-.2 {
+.two {
     grid-column: col-start 6 / span 3;
 }
 
-.3 {
+.three {
     grid-column: col-start 9 / span 4;
 }
 

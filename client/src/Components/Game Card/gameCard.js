@@ -123,35 +123,35 @@ class GameCard extends Component {
                     ? (
                         <div className="gameCard oswald">
                     <div className="row1">
-                        <div className="1">{this.props.guest_team}</div>
-                        <div className="2">Game #{this.props.game_id} {this.props.game_date} - {this.props.game_result}</div>
-                        <div className="3">{this.props.home_team}</div>
+                        <div className="one">{this.props.guest_team}</div>
+                        <div className="two">Game #{this.props.game_id} {this.props.game_date} - {this.props.game_result}</div>
+                        <div className="three">{this.props.home_team}</div>
                     </div>
                     <div className="row2">
                         <img src={this.props.guest_image} alt="Guest Team"/>
-                        <div className="2">@</div>
+                        <div className="two">@</div>
                         <img src={this.props.home_image} alt="Home Team"/>
                     </div>
                     <div className="row3">
-                        <div className="1">{this.props.guest_score}</div>
-                        <div className="2">
+                        <div className="one">{this.props.guest_score}</div>
+                        <div className="two">
                             <p>Final Score</p>
                             <p>{this.props.game_time}</p>
                             <p>{this.props.game_location}</p>
                         </div>
-                        <div className="3">{this.props.home_score}</div>
+                        <div className="three">{this.props.home_score}</div>
                     </div>
                 </div>
                     )
                     : (
                         <div className="gameCard oswald">
                             <div className="row1">
-                                <div className="1">
+                                <div className="one">
                                     <div>{this.props.guest_team}</div>
                                     <div><input disabled={!this.props.isCoach} type="text" id="textfield1" placeholder='Guest Team' onChange={(e) => updateGuestTeam(e.target.value)}/></div>
                                 </div>
                                
-                                <div className="2">
+                                <div className="two">
                                     <div>
                                         Game #{this.props.game_id} {this.props.game_date} - {this.props.game_result}
                                     </div>
@@ -160,7 +160,7 @@ class GameCard extends Component {
                                    </div>    
                                 </div>
                                 
-                                <div className="3">
+                                <div className="three">
                                     <div>{this.props.home_team}</div>
                                     <div><input disabled={!this.props.isCoach} type="text" id="textfield5" placeholder='Home Team' onChange={(e) => updateHomeTeam(e.target.value)}/></div>
                                 </div>
@@ -168,15 +168,15 @@ class GameCard extends Component {
                             </div>
 
                             <div className="row2">
-                                <div className="1">
+                                <div className="one">
                                     <img src={this.props.guest_image} alt="Guest Team"/>
                                     <div><input disabled={!this.props.isCoach} type="text" id="textfield6" placeholder='Guest Image URL' onChange={(e) => updateGuestImage(e.target.value)}/></div>
                                 </div>
                                 
                                 
-                                <div className="2">@</div>
+                                <div className="two">@</div>
 
-                                <div className="3">
+                                <div className="three">
                                     <img src={this.props.home_image} alt="Home Team"/>
                                     <div><input disabled={!this.props.isCoach} type="text" id="textfield7" placeholder='Home Image URL' onChange={(e) => updateHomeImage(e.target.value)}/></div>
                                 </div>
@@ -184,12 +184,12 @@ class GameCard extends Component {
                             </div>
 
                             <div className="row3">
-                                <div className="1">
+                                <div className="one">
                                     <div>{this.props.guest_score}</div>
                                     <div><input disabled={!this.props.isCoach} type="text" id="textfield8" placeholder='Guest Score' onChange={(e) => updateGuestScore(e.target.value)}/></div>   
                                 </div>
                                 
-                                <div className="2">
+                                <div className="two">
                                     <p>Final Score</p>
                                     <div>
                                         <p>{this.props.game_time}</p>
@@ -199,7 +199,7 @@ class GameCard extends Component {
                                     </div>  
                                 </div>
 
-                                <div className="3">
+                                <div className="three">
                                     <div>{this.props.home_score}</div>
                                     <div><input disabled={!this.props.isCoach} type="text"  id="textfield11" placeholder='Home Score' onChange={(e) => updateHomeScore(e.target.value)}/></div>    
                                 </div>    
