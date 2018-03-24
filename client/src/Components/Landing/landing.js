@@ -71,11 +71,12 @@ class Landing extends Component {
 }
 
 let mapStateToProps = (state) => {
-    const {sessionid, firstname, lastname, isCoach} = state;
+    const {sessionid, firstname, lastname, email, isCoach} = state;
     return (
         sessionid,
         firstname,
         lastname,
+        email,
         isCoach
     )
 }
