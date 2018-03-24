@@ -88,14 +88,8 @@ app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
     res.redirect('http://localhost:3000/#/')//this works
 });
 
-app.get('/api/auth/me', (req, res, next) => {
-    
-    if (!req.session.passport.user) {
-      return res.status(401).send('Log in required');
-    } else {
-      res.status(200).send(req.session.passport.user);
-      //return res.redirect('http://localhost:3000/#/user/');
-    }
+app.get('/api/auth/me', (req, res) => {
+    res.status(200).send(req.isAuthenticated)
   })
 
 app.get('/api/auth/logout', (req, res) => {
