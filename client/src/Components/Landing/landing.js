@@ -7,7 +7,7 @@ import Navbar from '../Navbar/navbar';
 import Lehi from '../../Assets/lehi-logo.jpg';
 import Judge from '../../Assets/judge-memorial-logo.jpg';
 import Kaylie from '../../Assets/Kaylie.jpg';
-import {updateSessionID, updateFirsname, updateLastname, updateEmail, updateIsCoach} from '../../Reducer/reducer';
+import {updateSessionID, updateFirstname, updateLastname, updateEmail, updateIsCoach} from '../../Reducer/reducer';
 
 class Landing extends Component {
     componentDidMount(){
