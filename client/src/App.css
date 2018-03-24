@@ -267,5 +267,9 @@ a[value=false]{
   display: none;
 }
 
+/* input[type=checkbox][value=false] + label{
+  display: none;
+}
+ */
 
 
