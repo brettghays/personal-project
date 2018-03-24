@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
-import {updateIsCoach, updateUserID} from '../../Reducer/reducer'
+import {updateUserID} from '../../Reducer/reducer'
 
 
 class Navbar extends Component {
@@ -32,4 +32,4 @@ let mapStateToProps = (state) => {
         isCoach,
         userid
     }
- };export default connect(mapStateToProps, {updateUserID, updateIsCoach})(Navbar);
+ };export default connect(mapStateToProps, {updateUserID})(Navbar);
