@@ -37,10 +37,10 @@ passport.use(strategy);
 passport.serializeUser(function(user, done) {
     done(null, {
         id: user.id,
-        firstname: user.name.givenName || '',
-        lastname: user.lastname || '',
+        firstname: user._json['https://example.com/firstname'] || '',
+        lastname: user._json['https://example.com/lastname'] || '',
         email: user._json.name || '',
-        iscoach: false
+        iscoach: (user._json['https://example.com/iscoach'] === 'true' ? true : false)
     });
   });
   
@@ -59,6 +59,9 @@ app.get('/api/auth', passport.authenticate('auth0', {
 
 app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
     //console.log('res.sessionID: ', req.sessionID)
+    console.log('this is first: ', req.user._json['https://example.com/firstname']);
+    console.log('this is last: ', req.user._json['https://example.com/lastname']);
+    console.log('this is iscoach: ', req.user._json['https://example.com/iscoach']);
     console.log("Passport.user: ",req.session.passport.user);//this gives me what was set for user and id
     let passportUser = req.session.passport.user;
     //console.log(passportUser.id)
@@ -70,7 +73,7 @@ app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
             if(user.length && user[0].session_id){
                 return done(null, user);
             } else{
-                dbInstance.create_user([passportUser.id, passportUser.firstname, passportUser.lastname, passportUser.email])
+                dbInstance.create_user([passportUser.id, passportUser.firstname, passportUser.lastname, passportUser.email, passportUser.iscoach])
                 .then(user => {
                     console.log('User created in db: ',user);
                     //console.log('profile, ', profile)
@@ -82,7 +85,7 @@ app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
         })
         console.log('this is req.user', req.user);
         console.log('this is passport.user', req.session.passport.user)
-    res.redirect('/#/')//this works
+    res.redirect('http://localhost:3000/#/')//this works
 });
 
 app.get('/api/auth/me', (req, res, next) => {
@@ -99,7 +102,7 @@ app.get('/api/auth/logout', (req, res) => {
     console.log('this is passport.user', req.session.passport.user)
     req.logOut();
     console.log('Successful logout!',req.session.passport.user)
-    return res.redirect('/#/');
+    return res.redirect('http://localhost:3000/#/');
     
   })
 

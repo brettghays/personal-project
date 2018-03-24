@@ -18,8 +18,8 @@ class Navbar extends Component {
 
             <div className="links-bottom">
                 <Link to = '/user' className = 'links'>Profile</Link>
-                <a href = '/api/auth' className = 'links'>Register / Login</a>
-                <a href = '/api/auth/logout' className = 'links'>Signout</a>
+                <a href = 'http://localhost:80/api/auth' className = 'links'>Register / Login</a>
+                <a href = 'http://localhost:80/api/auth/logout' className = 'links'>Signout</a>
             </div>
         </div>
         )

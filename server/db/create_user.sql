@@ -1,1 +1,1 @@
-INSERT INTO Users (session_id, firstname, lastname, email) VALUES ($1,$2,$3,$4);
+INSERT INTO Users (session_id, firstname, lastname, email, isCoach) VALUES ($1,$2,$3,$4,$5);
