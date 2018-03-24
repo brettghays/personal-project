@@ -17,7 +17,7 @@ class Navbar extends Component {
             </div>
 
             <div className="links-bottom">
-                <Link to = '/user' className = 'links'>Profile</Link>
+                <Link to = '/user' className = 'links' value={this.props.sessionid}>Profile</Link>
                 <a href = 'http://localhost:80/api/auth' className = 'links'>Register / Login</a>
                 <a href = 'http://localhost:80/api/auth/logout' className = 'links'>Signout</a>
             </div>
@@ -27,9 +27,9 @@ class Navbar extends Component {
 }
 
 let mapStateToProps = (state) => {
-    const {userid, isCoach} = state;
+    const {sessionid, isCoach} = state;
     return {
         isCoach,
-        userid
+        sessionid
     }
  };export default connect(mapStateToProps, {updateUserID})(Navbar);

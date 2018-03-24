@@ -4,7 +4,7 @@ const initialState = {
     //auth props
     user: {},
     userid: '',
-    sessionid: '',
+    sessionid: false,
     firstname: '',
     lastname: '',
     email: '',
