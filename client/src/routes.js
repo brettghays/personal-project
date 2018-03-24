@@ -19,7 +19,7 @@ export default (
             <Route component={Results} path = '/results' />
             <Route component={Roster} path = '/roster' />
             <Route component={Schedule} path = '/schedule' />
-            <Route component={User} path = '/user' /> 
+            <Route component={User} path = '/user/:id' /> 
             <Route component={NewGame} path = '/edit/newGame' />
             <Route component={NewPlayer} path = '/edit/newPlayer' />
         

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import axios from 'axios';
 import teamPic from '../../Assets/jvVarsity.jpg'
 import Navbar from '../Navbar/navbar';
 import Lehi from '../../Assets/lehi-logo.jpg';
@@ -10,9 +11,18 @@ import {updateIsCoach} from '../../Reducer/reducer';
 
 class Landing extends Component {
     componentDidMount(){
-        if((!this.props.firstname && !this.props.lastname) || !this.props.sessionid) {
-            this.props.updateIsCoach(false);
-        }
+        axios.get('/api/user')
+       .then( res => {
+           console.log(res.data)
+           const {session_id, firstname, lastname, email, iscoach} = res.data
+           console.log('THIS IS WORKING AND CONNECTed!!!!!!!!!!')
+           this.props.updateSessionID(session_id);
+           this.props.updateFirstname(firstname);
+           this.props.updateLastname(lastname);
+           this.props.updateEmail(email);
+           this.props.updateIsCoach(iscoach);
+       })
+       .catch(err => console.log(err))
     }
     render() {
         return(
