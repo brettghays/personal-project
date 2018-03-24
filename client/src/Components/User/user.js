@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import Navbar from '../Navbar/navbar';
-import {getUserInfo, updateSessionID, updateFirstname, updateLastname, updateEmail, updateIsCoach} from '../../Reducer/reducer';
+import {updateSessionID, updateFirstname, updateLastname, updateEmail, updateIsCoach} from '../../Reducer/reducer';
 
 class User extends Component {
     componentDidMount() {
@@ -29,7 +29,7 @@ class User extends Component {
             email: this.props.email,
             iscoach: this.props.isCoach
         }
-        axios.patch(`/api/user/${this.props.sessionid}`, body)
+        axios.patch(`/api/user/`, body)
         .then(res => {
             console.log(res.data)
         })
@@ -81,4 +81,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect( mapStateToProps, { getUserInfo, updateSessionID, updateFirstname, updateLastname, updateEmail, updateIsCoach })(User);
+export default connect( mapStateToProps, {updateSessionID, updateFirstname, updateLastname, updateEmail, updateIsCoach })(User);

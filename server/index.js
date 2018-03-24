@@ -118,14 +118,14 @@ app.get('/api/auth/logout', (req, res) => {
 })
 
 
-  app.patch('/api/user/:id', (req, res) => {
+  app.patch('/api/user', (req, res) => {
     const dbInstance = app.get('db');
-    const {firstname, lastname, iscoach} = req.body;
-    const sessionID = req.params.id;
+    const {session_id, firstname, lastname, iscoach} = req.body;
+    //const sessionID = req.params.id;
 
-    dbInstance.update_user([sessionID, firstname, lastname, iscoach])
+    dbInstance.update_user([session_id, firstname, lastname, iscoach])
         .then(() => {
-            dbInstance.read_player([sessionID])
+            dbInstance.read_user([session_id])
                 .then(user => {
                     console.log(user[0]);
                     res.status(200).send(user[0])

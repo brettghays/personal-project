@@ -72,13 +72,13 @@ class Landing extends Component {
 
 let mapStateToProps = (state) => {
     const {sessionid, firstname, lastname, email, isCoach} = state;
-    return (
+    return {
         sessionid,
         firstname,
         lastname,
         email,
         isCoach
-    )
+    }
 }
 
 export default connect(mapStateToProps, {updateSessionID, updateFirstname, updateLastname, updateEmail, updateIsCoach})(Landing)
