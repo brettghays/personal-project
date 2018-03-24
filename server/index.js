@@ -89,7 +89,7 @@ app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
 });
 
 app.get('/api/auth/me', (req, res) => {
-    res.status(200).send(req.isAuthenticated)
+    res.status(200).send(req.isAuthenticated())
   })
 
 app.get('/api/auth/logout', (req, res) => {

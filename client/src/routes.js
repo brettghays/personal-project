@@ -28,7 +28,7 @@ class CheckAuthentication extends Component {
     checkAuthentication() {
         axios.get('/api/auth/me')
             .then(res => {
-                console.log('Authenticated? ', res);
+                console.log('Authenticated? ', res.data);
                 if (!res.data) {
                     this.setState({ loading: false, authenticated: false });
                 } else {
