@@ -39,7 +39,8 @@ passport.serializeUser(function(user, done) {
         id: user.id,
         firstname: user.name.givenName || '',
         lastname: user.lastname || '',
-        email: user._json.name || ''
+        email: user._json.name || '',
+        iscoach: false
     });
   });
   
