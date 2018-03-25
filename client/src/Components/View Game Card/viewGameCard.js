@@ -3,17 +3,15 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import Navbar from '../Navbar/navbar';
-import EditGameCard from '../Edit Game Card/editGameCard';
-import ViewGameCard from '../View Game Card/viewGameCard';
 import {updateGameId, updateGuestTeam, updateHomeTeam, updateGameDate, updateHomeImage, updateGuestImage, updateHomeScore, updateGuestScore, updateGameTime, updateGameLocation, updateGameResult, updateGameCard, updateOriginalGame,updateEditMode} from '../../Reducer/reducer';
-import './gameCard.css';
+import '../Game Card/gameCard.css';
 
 
-class GameCard extends Component {
-    componentDidMount() {
+class ViewGameCard extends Component {
+    /* componentDidMount() {
         axios.get(`/api/game/${this.props.match.params.id}`)
             .then(res => {
-                console.log(res.data)
+                //console.log(res.data)
                 const {game_id, game_date, game_location, game_time, guest_image, guest_score, guest_team, home_image, home_score, home_team, game_result} = res.data;
 
                 this.props.updateGameDate(game_date);
@@ -32,7 +30,7 @@ class GameCard extends Component {
             .catch(err => console.log(err))
     }
 
-    /* handleSave() {
+    handleSave() {
         const body = {
             game_id: this.props.game_id,
             game_date: this.props.game_date,
@@ -65,14 +63,14 @@ class GameCard extends Component {
         document.getElementById("textfield9").value = "";
         document.getElementById("textfield10").value = "";
         document.getElementById("textfield11").value = "";
-    }; */
+    };
 
     handleEdit() {
         //this.props.updateGameCard('edit')
         this.props.updateEditMode(false)
     };
 
-    /* handleCancel(){
+    handleCancel(){
         const {game_id, game_date, game_location, game_time, guest_image, guest_score, guest_team, home_image, home_score, home_team, game_result} = this.props.original_game;
 
         this.props.updateGameDate(game_date);
@@ -98,7 +96,7 @@ class GameCard extends Component {
         document.getElementById("textfield10").value = "";
         document.getElementById("textfield11").value = "";
         //this.props.updateGameCard('view');
-    } */
+    }
 
     handleDelete() {
         axios.delete(`/api/game/${this.props.game_id}`)
@@ -106,20 +104,15 @@ class GameCard extends Component {
                 console.log(res.data)
             })
             .catch(err => console.log(err))
-    }
+    } */
 
     render() {
-        //const edit = !!this.props.match.params.edit;
+       /*  const edit = !!this.props.match.params.edit;
         const {updateGameId, updateGameDate, updateGameLocation, updateGameTime, updateGuestImage, updateGuestScore, updateGuestTeam, updateHomeImage, updateHomeScore, updateHomeTeam, updateGameResult} = this.props;
-    
+     */
         return(
-            <div className="gameCardContainer">
-                <div className="header1 oswald">
-                    <p>Lehi Girls Basketball 2013-2014 Game Details</p>
-                </div>
-
-                <Navbar />
-
+            
+                
                 <div className="gameCard oswald">
                     <div className="row1">
                         <div className="one">{this.props.guest_team}</div>
@@ -141,11 +134,6 @@ class GameCard extends Component {
                         <div className="three">{this.props.home_score}</div>
                     </div>
                 </div>
-
-                <Link to={`/edit/game/${this.props.game_id}`}><button value={this.props.isCoach}>Edit Game</button></Link>
-                <Link to={'/schedule'}><button value={this.props.isCoach} onClick={() => this.handleDelete()}>Delete Game?</button></Link>
-                {/* <button value={this.props.isCoach ? edit : this.props.edit_mode} onClick={() => this.handleCancel()}>Cancel</button> */}
-            </div>
         )
     }
 }
@@ -171,4 +159,4 @@ let mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, {updateOriginalGame, updateGameId, updateGameDate,updateGameLocation,updateGameTime,updateGuestImage,updateGuestScore, updateGuestTeam, updateHomeImage, updateHomeScore, updateHomeTeam, updateGameResult, updateEditMode})(GameCard);
+export default connect(mapStateToProps, {updateOriginalGame, updateGameId, updateGameDate,updateGameLocation,updateGameTime,updateGuestImage,updateGuestScore, updateGuestTeam, updateHomeImage, updateHomeScore, updateHomeTeam, updateGameResult, updateEditMode})(ViewGameCard);

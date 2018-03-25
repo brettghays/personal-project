@@ -10,6 +10,7 @@ import Schedule from './Components/Schedule/schedule';
 import User from './Components/User/user';
 import NewGame from './Components/New Game/newGame';
 import NewPlayer from './Components/New Player/newPlayer';
+import EditGameCard from './Components/Edit Game Card/editGameCard';
 
 class CheckAuthentication extends Component {
     constructor(props) {
@@ -64,20 +65,22 @@ export default (
     <Switch>
         
             <Route component={Landing} exact path = '/' />
-            <Route component={GameCard} path = '/schedule/:id/:edit?' />
+            <Route component={GameCard} path = '/schedule/:id' />
             <Route component={PlayerCard} path = '/roster/:id/:edit?' />
             <Route component={Results} path = '/results' />
             <Route component={Roster} path = '/roster' />
-            <Route component={Schedule} path = '/schedule' /> 
+            <Route component={Schedule} path = '/schedule' />
+            
             <Route render={() => {
                 return(
                     <CheckAuthentication>
                         <Route component={User} path = '/user' />
                         <Route component={NewGame} path = '/edit/newGame' />
                         <Route component={NewPlayer} path = '/edit/newPlayer' />
+                        <Route component={EditGameCard} path = '/edit/game/:id' /> 
                     </CheckAuthentication>
                 )
-            }}></Route>
+            }} />
         
     </Switch>
 )
