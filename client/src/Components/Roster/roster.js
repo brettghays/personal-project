@@ -5,11 +5,13 @@ import axios from 'axios';
 import Navbar from '../Navbar/navbar';
 import {updateRoster} from '../../Reducer/reducer';
 
+import './roster.css'
+
 class Roster extends Component {
     componentDidMount() {
         axios.get('/api/players')
             .then(res => {
-                //console.log(res.data)
+                console.log(res.data)
                 this.props.updateRoster(res.data);
             })
             .catch(err => console.log(err))
@@ -17,33 +19,34 @@ class Roster extends Component {
     render() {
         const roster = this.props.roster.map((player,i) => {
             return (
-                <div className="childPlayer" key = {player.player_id}>
-                    <div className="raleway a">
-                        <p>{player.player_number}</p>
-                    </div>
+                <tr className="childPlayer" key = {player.player_id}>
+                    <td className="raleway a">
+                        {player.player_number}
+                    </td>
 
-                    <div className="raleway b">
+                    <td className="raleway b">
                         <Link to = {`/roster/${player.player_id}`}>
-                            <p>{player.first_name} {player.last_name}</p>
+                            {player.first_name} {player.last_name}
                         </Link>
-                    </div>
+                    </td>
 
-                    <div className="raleway c">
-                        <p>{player.player_height}</p>
-                    </div>
+                    <td className="raleway c">
+                        {player.player_height}
+                    </td>
 
-                    <div className="raleway d">
-                        <p>{player.position}</p>
-                    </div>
+                    <td className="raleway d">
+                        {player.position}
+                    </td>
 
-                    <div className="raleway e">
-                        <img src={player.player_image} alt="Picture should be here"/>
-                    </div>
+                    <td className="raleway e">
+                        {player.class}
+                    </td>
 
-                    <div className="raleway f">
-                        <p>{player.roster_years}</p>
-                    </div>
-                </div>
+                    <td className="raleway f">
+                        {player.roster_years}
+                    </td>
+            </tr>
+                
             )
         })
         return(
@@ -51,19 +54,31 @@ class Roster extends Component {
             <div className="header oswald">Lehi Girls Basketball 2013-2014 Roster</div>
             
             <Navbar />
+
+            <table className="bottomBorder">
+                <thead>
+                    <tr>
+                        <th className="oswald">#</th>
+                        <th className="oswald">Player</th>
+                        <th className="oswald">Height</th>
+                        <th className="oswald">Position</th>
+                        <th className="oswald">Class</th>
+                        <th className="oswald">Roster Years</th>
+                    </tr>
+                </thead>
+                <tfoot colspan = '6'>
+                    <Link to='/edit/newPlayer'><button className = "buttons new" value={this.props.isCoach}>Create New Player</button></Link>
+                </tfoot>
+                {roster}
+            </table>
             
-            <div className="col-header oswald u">#</div>
+            {/* <div className="col-header oswald u">#</div>
             <div className="col-header oswald v">Player</div>
             <div className="col-header oswald w">Height</div>
             <div className="col-header oswald x">Position</div>
             <div className="col-header oswald y">Class</div>
-            <div className="col-header oswald z">Roster Years</div> 
+            <div className="col-header oswald z">Roster Years</div> */} 
 
-            <div className="rosterParent">{roster}</div>
-
-            <div className="buttons">
-                    <Link to='/edit/newPlayer'><button value={this.props.isCoach}>Create New Player</button></Link>
-                </div>
             </div>
         )
     }

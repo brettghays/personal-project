@@ -1,0 +1,102 @@
+@media only screen and (min-width: 769px) {
+    table {
+        border-collapse: collapse;
+        display: table;
+        
+    }
+    
+    thead {
+        font-size: 2em;
+        border-bottom: 2px solid #1c1d21;
+        
+    }
+
+    th {
+        background: white;
+    }
+    
+    tfoot {
+        margin-left: 0;
+    }
+     
+    table.bottomBorder tr td { 
+        border-bottom: 2px solid #1c1d21; 
+        border-right: none;
+        border-left: none;
+        border-top: none;
+        padding: 10px; 
+        text-align: left;
+    }
+    
+    tr:nth-child(odd) {
+        background-color: #ccc7b9;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #e9edde;
+    } 
+        
+    a {
+        color: #1C1D21;
+        text-decoration: none;
+    }
+    
+    .buttons.new {
+        background-color: #382268;
+        border-radius: 3px;
+        /*box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1) 0 1px 2px 0 rgba(0,0,0,0.2);*/
+        color: #f1f7ed;
+        margin: 10px;
+        font-size: 1.1em;
+        font-family: raleway;
+    } 
+}
+@media only screen and (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolue;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    th {
+        display: none;
+    }
+
+    td {
+        border: none;
+        border-bottom: 2px solid #1c1d21;
+        position: relative;
+        padding-left: 50%
+    }
+
+    tr:nth-child(odd) {
+        background-color: #ccc7b9;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #e9edde;
+    }   
+    
+
+    td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    td:nth-of-type(1):before {content: '#: ';}    
+    td:nth-of-type(2):before {content: 'Player: ';}
+    td:nth-of-type(3):before {content: 'Height: ';}
+    td:nth-of-type(4):before {content: 'Position: ';}
+    td:nth-of-type(5):before {content: 'Class: ';}
+    td:nth-of-type(6):before {content: 'Roster Years: ';}
+
+
+}

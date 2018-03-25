@@ -41,9 +41,9 @@
 
 .header {
   grid-area: h;
-  background-color: #f1f7ed;
+  background-color: #605b56;
   font-size: 2.25em;
-  border: 1px black solid;
+  
   text-align: right;
   padding: 10px
 }
@@ -52,7 +52,6 @@
   grid-area: n;
   background-color: #382268;
   font-size: 1.75em;
-  border: 1px black solid;
   color: #f1f7ed;
   padding: 10px;
   
@@ -107,38 +106,32 @@
 
 .a {
   grid-area: a;
-  background-color: #f1f7ed;
-  border: 1px black solid;
+  
 }
 
 .b{
   grid-area: b;
-  background-color: #f1f7ed;
-  border: 1px black solid;
+  
 }
 
 .c {
   grid-area: c;
-  background-color: #f1f7ed;
-  border: 1px black solid;
+  
 }
 
 .d {
   grid-area: d;
-  background-color: #f1f7ed;
-  border: 1px black solid;
+ 
 }
 
 .e {
   grid-area: e;
-  background-color: #f1f7ed;
-  border: 1px black solid;
+  
 }
 
 .f {
   grid-area: f;
-  background-color: #f1f7ed;
-  border: 1px black solid;
+  
 }
 
 .u {
@@ -205,11 +198,6 @@ p {
   text-decoration: none;
 }
 
-.button {
-  height: 100px;
-  width: 300px;
-  color: purple;
-}
 
 .child1 {
   display: flex;
