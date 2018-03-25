@@ -11,6 +11,7 @@ import User from './Components/User/user';
 import NewGame from './Components/New Game/newGame';
 import NewPlayer from './Components/New Player/newPlayer';
 import EditGameCard from './Components/Edit Game Card/editGameCard';
+import EditPlayerCard from './Components/Edit Player Card/editPlayerCard';
 
 class CheckAuthentication extends Component {
     constructor(props) {
@@ -78,6 +79,7 @@ export default (
                         <Route component={NewGame} path = '/edit/newGame' />
                         <Route component={NewPlayer} path = '/edit/newPlayer' />
                         <Route component={EditGameCard} path = '/edit/game/:id' /> 
+                        <Route component={EditPlayerCard} path = '/edit/player/:id' />
                     </CheckAuthentication>
                 )
             }} />

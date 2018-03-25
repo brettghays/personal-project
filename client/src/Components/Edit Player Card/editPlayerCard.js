@@ -30,7 +30,7 @@ class PlayerCard extends Component {
             .catch(err => console.log(err))
     }
 
-    /* handleSave() {
+    handleSave() {
         const {player_nickname} = this.props;
         const body = {
             player_id: this.props.player_id,
@@ -67,12 +67,12 @@ class PlayerCard extends Component {
         document.getElementById("textfield9").value = "";
         document.getElementById("textfield10").value = "";
         document.getElementById("textfield11").value = "";
-    }; */
+    };
 
     /* handleEdit() {
         //this.props.updateGameCard('edit')
         this.props.updateEditMode(false)
-    };
+    }; */
 
     handleCancel(){
         const {player_id, first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_nickname, player_unique_fact} = this.props.original_player;
@@ -101,15 +101,15 @@ class PlayerCard extends Component {
         document.getElementById("textfield10").value = "";
         document.getElementById("textfield11").value = "";
         //this.props.updateGameCard('view');
-    } */
+    }
 
-    handleDelete() {
+    /* handleDelete() {
         axios.delete(`/api/player/${this.props.player_id}`)
             .then(res => {
                 console.log(res.data)
             })
             .catch(err => console.log(err))
-    }
+    } */
     
     render() {  
         //const edit = !!this.props.match.params.edit;
@@ -125,26 +125,34 @@ class PlayerCard extends Component {
 
                 <div>
                     <div className="img">
-                        <img src={this.props.player_image} alt=""/>
+                        <div><img src={this.props.player_image} alt=""/></div>
+                        <div><input disabled={!this.props.isCoach} type="text" id="textfield1" placeholder='Player Image URL' onChange={(e) => updatePlayerImage(e.target.value)}/></div>
                     </div>
                     <div className="info">
                         <div className="name">{this.props.first_name} {this.props.last_name}</div>
+                        <input disabled={!this.props.isCoach} type="text" id="textfield2"placeholder='First Name' onChange={(e) => updateFirstName(e.target.value)}/> <input disabled={!this.props.isCoach} type="text" id="textfield3" placeholder="Last Name" onChange={(e) => updateLastName(e.target.value)}/>
                         <div className="num position">{this.props.player_number} | {this.props.position}</div>
+                        <input disabled={!this.props.isCoach} type="text" id="textfield4"placeholder='Jersey Number' onChange={(e) => updatePlayerNumber(e.target.value)}/> <input disabled={!this.props.isCoach} type="text" id="textfield5" placeholder="Position" onChange={(e) => updatePosition(e.target.value)}/>
                         <div className="height">Height: {this.props.player_height}</div>
+                        <input disabled={!this.props.isCoach} type="text" id="textfield6" placeholder='Height' onChange={(e) => updatePlayerHeight(e.target.value)}/>
                         <div className="class">Varsity Roster Years: {this.props.roster_years}</div>
+                        <input disabled={!this.props.isCoach} type="text" id="textfield7" placeholder='Roster Years' onChange={(e) => updateRosterYears(e.target.value)}/>
                     </div>
                     <div className="favorites">
                         <div className="nickname">Nickname: {this.props.player_nickname}</div>
+                        <input disabled={!this.props.isCoach} type="text" id="textfield8" placeholder='Nickname' onChange={(e) => updateNickname(e.target.value)}/>
                         <div className="food">Favorite Food: {this.props.player_fav_food}</div>
-                        <div className="fact">Unique Fact About {this.props.first_name}:        {this.props.player_unique_fact}</div>
-                        <div className="quote">Favorite Quote: {this.props.quote}</div>
+                        <input disabled={!this.props.isCoach} type="text" id="textfield9" placeholder='Favorite Food' onChange={(e) => updateFavFood(e.target.value)}/>
+                        <div className="fact">Unique Fact About {this.props.first_name}: {this.props.player_unique_fact}</div>
+                        <input disabled={!this.props.isCoach} type="text" id="textfield10" placeholder='Unique Fact' onChange={(e) => updateFact(e.target.value)}/>
+                        <div className="quote">Favorite Quote: {this.props.player_fav_quote}</div>
+                        <input disabled={!this.props.isCoach} type="text" id="textfield11" placeholder='Favorite Quote' onChange={(e) => updateFavQuote(e.target.value)}/>
                     </div>
                 </div>
 
-                <Link to={`/edit/player/${this.props.player_id}`}><button value={this.props.isCoach}>Edit Player</button></Link>
-                <Link to={'/roster'}><button value={this.props.isCoach} onClick={() => this.handleDelete()}>Delete Player?</button></Link>
-
-                
+                <button value={this.props.isCoach}onClick={() => this.handleSave()}>Save Player</button>
+                <button value={this.props.isCoach} onClick={() => this.handleCancel()}>Cancel Changes</button>
+                   
             </div>
         )
     }}

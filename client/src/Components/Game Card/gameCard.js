@@ -3,8 +3,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import Navbar from '../Navbar/navbar';
-import EditGameCard from '../Edit Game Card/editGameCard';
-import ViewGameCard from '../View Game Card/viewGameCard';
+
 import {updateGameId, updateGuestTeam, updateHomeTeam, updateGameDate, updateHomeImage, updateGuestImage, updateHomeScore, updateGuestScore, updateGameTime, updateGameLocation, updateGameResult, updateGameCard, updateOriginalGame,updateEditMode} from '../../Reducer/reducer';
 import './gameCard.css';
 
@@ -67,11 +66,11 @@ class GameCard extends Component {
         document.getElementById("textfield11").value = "";
     }; */
 
-    handleEdit() {
+    /* handleEdit() {
         //this.props.updateGameCard('edit')
         this.props.updateEditMode(false)
     };
-
+ */
     /* handleCancel(){
         const {game_id, game_date, game_location, game_time, guest_image, guest_score, guest_team, home_image, home_score, home_team, game_result} = this.props.original_game;
 
