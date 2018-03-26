@@ -2,7 +2,7 @@ import axios from 'axios';
 //setup initial state
 const initialState = {
     //auth props
-    user: {},
+    original_user: {},
     userid: '',
     sessionid: false,
     firstname: '',
@@ -48,7 +48,7 @@ const initialState = {
 
 //set up action types
 //Auth action types
-const GET_USER_INFO = 'GET_USER_INFO';
+const UPDATE_ORIGINAL_USER = 'UPDATE_ORIGINAL_USER';
 const UPDATE_USERID = 'UPDATE_USERID';
 const UPDATE_SESSIONID = 'UPDATE_SESSIONID'
 const UPDATE_FIRSTNAME = 'UPDATE_FIRSTNAME';
@@ -94,8 +94,8 @@ const UPDATE_DISPLAY = 'UPDATE_DISPLAY';
 function reducer(state=initialState, action) {
     switch(action.type){
         //auth cases
-        case GET_USER_INFO + '_FULFILLED':
-            return Object.assign({}, state, {user: action.payload});
+        case UPDATE_ORIGINAL_USER:
+            return Object.assign({}, state, {original_user: action.payload});
 
         case UPDATE_USERID:
             return Object.assign({}, state, {userid: action.payload});
@@ -218,14 +218,10 @@ function reducer(state=initialState, action) {
 
 //set up action creators
 //auth functions
-export function getUserInfo() {
-    const userInfo = axios.get('/api/auth/me').then( res => {
-        return res.data
-    })
-    console.log(userInfo)
+export function updateOriginalUser (user) {
     return {
-        type: GET_USER_INFO,
-        payload: userInfo
+        type: UPDATE_ORIGINAL_USER,
+        payload: user
     }
 }
 export function updateUserID (userID) {

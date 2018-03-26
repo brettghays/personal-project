@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import Navbar from '../Navbar/navbar';
-import {updateSessionID, updateFirstname, updateLastname, updateEmail, updateIsCoach} from '../../Reducer/reducer';
+import {updateSessionID, updateFirstname, updateLastname, updateEmail, updateIsCoach, updateOriginalUser} from '../../Reducer/reducer';
+import './user.css'
 
 class User extends Component {
     componentDidMount() {
@@ -17,6 +18,7 @@ class User extends Component {
                 this.props.updateLastname(lastname);
                 this.props.updateEmail(email);
                 this.props.updateIsCoach(iscoach);
+                this.props.updateOriginalUser(res.data)
             })
             .catch(err => console.log(err))
     }
@@ -34,34 +36,59 @@ class User extends Component {
             console.log(res.data)
         })
         .catch(err => console.log(err))
+        document.getElementById("textfield1").value = "";
+        document.getElementById("textfield2").value = "";
+        document.getElementById("textfield3").value = "";
     }
+
+    handleCancel(){
+        const {
+            firstname,
+            lastname,
+            email,
+            isCoach} = this.props.original_user;
+
+        this.props.updateFirstname(firstname);
+        this.props.updateLastname(lastname);
+        this.props.updateEmail(email);
+        this.props.updateIsCoach(isCoach);
+        document.getElementById("textfield1").value = "";
+        document.getElementById("textfield2").value = "";
+        document.getElementById("textfield3").value = "";
+        
+    }
+
     
     render() {
         //const {firstname, lastname, email} = this.props.user;
         const {updateFirstname, updateLastname, updateEmail, updateIsCoach} = this.props;
         return(
             <div className="userContainer">
-                <div className="header1 oswald">Create User Profile</div>
+                <div className="header oswald">Edit User Profile</div>
 
                 <Navbar />
 
-                <div className="gameCard raleway">
-                    <div>
-                        <span><input required type="text" placeholder='First Name' value={this.props.firstname} onChange={(e) => updateFirstname(e.target.value)}/></span> 
-                        <div></div>
-                        <span><input required type="text" placeholder='Last Name' value={this.props.lastname} onChange={(e) => updateLastname(e.target.value)}/></span>
+                <div className="user-profile title raleway">
+                    <div className="user-top-row">
+                        <div className="name">{this.props.firstname} {this.props.lastname}</div>
+                        <input disabled={!this.props.isCoach} type="text" id="textfield1"placeholder='First Name' onChange={(e) => updateFirstname(e.target.value)}/> <input disabled={!this.props.isCoach} type="text" id="textfield2" placeholder="Last Name" onChange={(e) => updateLastname(e.target.value)}/>
                     </div>
                     
-                    <div>
-                        <input required type="email" placeholder='Email Address' value={this.props.email} onChange={(e) => updateEmail(e.target.value)}/>
+                    <div className="user-middle-row">
+                        <div className="email">{this.props.email}</div>
+                        <input disabled={!this.props.isCoach} type="text" id="textfield3"placeholder='Email' onChange={(e) => updateEmail(e.target.value)}/>
                     </div>
 
-                    <div>
+                    <div className="user-bottom-row">
                         <input id='isCoach' type="checkbox" value={!this.props.isCoach || this.props.isCoach === 'false' ? true : false}onChange={(e) => updateIsCoach(e.target.value)} checked = {this.props.isCoach}/>
                         <label htmlFor="isCoach">Are you a coach?</label>
                     </div>
                     
-                    <Link to='/'><button onClick = {() => this.handleSubmit()}>Submit Profile</button></Link>
+                    <div className="button-wrapper">
+                        <Link to='/'><button className="buttons save"onClick = {() => this.handleSubmit()}>Submit Profile</button></Link>
+                        <button className="buttons cancel" onClick={() => this.handleCancel()}>Cancel Changes</button>   
+                    </div>
+                    
                     {/* <Link to = '/'><button>Returning User</button></Link> */}
                 </div>
             </div>
@@ -70,9 +97,9 @@ class User extends Component {
 }
 
 function mapStateToProps(state) {
-    const {user, sessionid, firstname, lastname, email, isCoach} = state
+    const {original_user, sessionid, firstname, lastname, email, isCoach} = state
     return {
-        user,
+        original_user,
         sessionid,
         firstname,
         lastname,
@@ -81,4 +108,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect( mapStateToProps, {updateSessionID, updateFirstname, updateLastname, updateEmail, updateIsCoach })(User);
+export default connect( mapStateToProps, {updateSessionID, updateFirstname, updateLastname, updateEmail, updateIsCoach, updateOriginalUser })(User);

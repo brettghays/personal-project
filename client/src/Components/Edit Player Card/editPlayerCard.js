@@ -161,7 +161,7 @@ class PlayerCard extends Component {
 
                     <div className="button-wrapper">
                         <button className="buttons save" value={this.props.isCoach}onClick={() => this.handleSave()}>Save Player</button>
-                        <button className="buttons delete" value={this.props.isCoach} onClick={() => this.handleCancel()}>Cancel Changes</button>
+                        <button className="buttons cancel" value={this.props.isCoach} onClick={() => this.handleCancel()}>Cancel Changes</button>
                     </div>
                 </div>    
             </div>
