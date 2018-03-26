@@ -149,7 +149,7 @@ class PlayerCard extends Component {
                     
 
                     <div className="button-wrapper">
-                        <Link to={`/edit/player/${this.props.player_id}`}><button className="buttons edit" value=    {this.props.isCoach}>Edit Player</button></Link>
+                        <Link to={`/edit/player/${this.props.player_id}`}><button className="buttons edit" value={this.props.isCoach}>Edit Player</button></Link>
                         <Link to={'/roster'}><button className="buttons delete" value={this.props.isCoach} onClick={() =>  this.handleDelete()}>Delete Player?</button></Link>
                     </div>
                 </div>

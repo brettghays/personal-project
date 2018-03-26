@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import Navbar from '../Navbar/navbar';
 import {updateOriginalPlayer, updatePlayerID, updateFirstName, updateLastName, updatePlayerNumber, updatePlayerImage, updatePlayerHeight, updatePosition, updateRosterYears, updateFavFood, updateFavQuote, updateFact, updateNickname, updateFirstname, updateLastname, updateEditMode, updateClassYear} from '../../Reducer/reducer';
+import './editPlayerCard.css';
 
 class PlayerCard extends Component {
     //This will actually be using a Get request to get info from DB and setting on state instead of mapping
@@ -11,7 +12,7 @@ class PlayerCard extends Component {
         axios.get(`/api/player/${this.props.match.params.id}`)
             .then(res => {
                 console.log(res.data)
-                const {player_id, first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_nickname, player_unique_fact, classYear} = res.data;
+                const {player_id, first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_nickname, player_unique_fact, classyear} = res.data;
 
                 this.props.updatePlayerImage(player_image);
                 this.props.updatePlayerID(player_id);
@@ -25,7 +26,7 @@ class PlayerCard extends Component {
                 this.props.updateFavQuote(player_fav_quote);
                 this.props.updateNickname(player_nickname);
                 this.props.updateFact(player_unique_fact);
-                this.props.updateClassYear(classYear);
+                this.props.updateClassYear(classyear);
                 this.props.updateOriginalPlayer(res.data);
             })
             .catch(err => console.log(err))
@@ -121,19 +122,20 @@ class PlayerCard extends Component {
         const {updateOriginalPlayer, updatePlayerID, updateFirstName, updateLastName, updatePlayerNumber, updatePlayerHeight, updatePosition, updateRosterYears, updatePlayerImage, updateFavFood, updateFavQuote, updateNickname, updateFact, updateClassYear} = this.props;
 
         return (
-            <div className="container">
+            <div className="pc-container">
                 <div className="header oswald">
                     <p>Lehi Girls Basketball 2013-2014 Player Card</p>
                 </div>
 
                 <Navbar />
 
-                <div>
-                    <div className="img">
-                        <div><img src={this.props.player_image} alt=""/></div>
+                <div className="playerCard raleway">
+
+                    <div>
+                        <div className="edit-pc-img left"><img src={this.props.player_image} alt=""/></div>
                         <div><input disabled={!this.props.isCoach} type="text" id="textfield1" placeholder='Player Image URL' onChange={(e) => updatePlayerImage(e.target.value)}/></div>
                     </div>
-                    <div className="info">
+                    <div className="player-info right">
                         <div className="name">{this.props.first_name} {this.props.last_name}</div>
                         <input disabled={!this.props.isCoach} type="text" id="textfield2"placeholder='First Name' onChange={(e) => updateFirstName(e.target.value)}/> <input disabled={!this.props.isCoach} type="text" id="textfield3" placeholder="Last Name" onChange={(e) => updateLastName(e.target.value)}/>
                         <div className="classYear">{this.props.classYear}</div>
@@ -145,7 +147,8 @@ class PlayerCard extends Component {
                         <div className="class">Varsity Roster Years: {this.props.roster_years}</div>
                         <input disabled={!this.props.isCoach} type="text" id="textfield7" placeholder='Roster Years' onChange={(e) => updateRosterYears(e.target.value)}/>
                     </div>
-                    <div className="favorites">
+
+                    <div className="edit-player-favorites bottom">
                         <div className="nickname">Nickname: {this.props.player_nickname}</div>
                         <input disabled={!this.props.isCoach} type="text" id="textfield8" placeholder='Nickname' onChange={(e) => updateNickname(e.target.value)}/>
                         <div className="food">Favorite Food: {this.props.player_fav_food}</div>
@@ -155,11 +158,12 @@ class PlayerCard extends Component {
                         <div className="quote">Favorite Quote: {this.props.player_fav_quote}</div>
                         <input disabled={!this.props.isCoach} type="text" id="textfield11" placeholder='Favorite Quote' onChange={(e) => updateFavQuote(e.target.value)}/>
                     </div>
-                </div>
 
-                <button value={this.props.isCoach}onClick={() => this.handleSave()}>Save Player</button>
-                <button value={this.props.isCoach} onClick={() => this.handleCancel()}>Cancel Changes</button>
-                   
+                    <div className="button-wrapper">
+                        <button className="buttons save" value={this.props.isCoach}onClick={() => this.handleSave()}>Save Player</button>
+                        <button className="buttons delete" value={this.props.isCoach} onClick={() => this.handleCancel()}>Cancel Changes</button>
+                    </div>
+                </div>    
             </div>
         )
     }}

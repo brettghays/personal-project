@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import Navbar from '../Navbar/navbar';
-import {updateOriginalPlayer, updatePlayerID, updateFirstName, updateLastName, updatePlayerNumber, updatePlayerHeight, updatePosition, updateRosterYears, updatePlayerImage, updateFavFood, updateFavQuote, updateNickname, updateFact, updateEditMode} from '../../Reducer/reducer';
+import {updateOriginalPlayer, updatePlayerID, updateFirstName, updateLastName, updatePlayerNumber, updatePlayerHeight, updatePosition, updateRosterYears, updatePlayerImage, updateFavFood, updateFavQuote, updateNickname, updateFact, updateEditMode, updateClassYear} from '../../Reducer/reducer';
 
 class NewPlayer extends Component {
     //This will actually be using a Get request to get info from DB and setting on state instead of mapping
@@ -20,6 +20,7 @@ class NewPlayer extends Component {
         this.props.updateNickname('');
         this.props.updateFact('');
         this.props.updatePlayerID('');
+        this.props.updateClassYear('');
     }
 
     handleSave() {
@@ -35,7 +36,8 @@ class NewPlayer extends Component {
             player_fav_food: this.props.player_fav_food,
             player_fav_quote: this.props.player_fav_quote,
             player_unique_fact: this.props.player_unique_fact,
-            player_nickname: this.props.player_nickname
+            player_nickname: this.props.player_nickname,
+            classyear: this.props.classYear
         }
         axios.post(`/api/players`, body)
             .then(res => {
@@ -60,7 +62,7 @@ class NewPlayer extends Component {
     };
 
     handleCancel(){
-        const {player_id, first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_nickname, player_unique_fact} = this.props.original_player;
+        const {player_id, first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_nickname, player_unique_fact, classYear} = this.props.original_player;
 
         this.props.updatePlayerImage(player_image);
         this.props.updatePlayerID(player_id);
@@ -70,6 +72,7 @@ class NewPlayer extends Component {
         this.props.updatePosition(position);
         this.props.updatePlayerHeight(player_height);
         this.props.updateRosterYears(roster_years);
+        this.props.updateClassYear(classYear)
         document.getElementById("textfield1").value = "";
         document.getElementById("textfield2").value = "";
         document.getElementById("textfield3").value = "";
@@ -86,26 +89,28 @@ class NewPlayer extends Component {
     }
     
     render() {   
-        const {updateOriginalPlayer, updatePlayerID, updateFirstName, updateLastName, updatePlayerNumber, updatePlayerHeight, updatePosition, updateRosterYears, updatePlayerImage, updateFavFood, updateFavQuote, updateNickname, updateFact, updateEditMode} = this.props;
+        const {updateOriginalPlayer, updatePlayerID, updateFirstName, updateLastName, updatePlayerNumber, updatePlayerHeight, updatePosition, updateRosterYears, updatePlayerImage, updateFavFood, updateFavQuote, updateNickname, updateFact, updateEditMode, updateClassYear} = this.props;
 
         return (
-            <div className="container">
+            <div className="pc-container">
                 <div className="header oswald">
                     <p>Lehi Girls Basketball 2013-2014 Add Player</p>
                 </div>
 
                 <Navbar />
 
-                <div>
-                    <div className="img">
-                        <div><img src={this.props.player_image} alt=""/></div>
+                <div className="playerCard raleway">
+                    <div>
+                        <div className="new-pc-img"><img src={this.props.player_image} alt=""/></div>
                         <div><input disabled={!this.props.isCoach} type="text" id="textfield1" placeholder='Player Image URL' onChange={(e) => updatePlayerImage(e.target.value)}/></div>
                     </div>
-                    <div className="info">
+                    <div className="player-info right">
                         <div className="playerID">Player ID: {this.props.player_id}</div>
                         <input disabled={!this.props.isCoach} type="text" id="textfield8" placeholder='Player ID' onChange={(e) => updatePlayerID(e.target.value)}/>
                         <div className="name">{this.props.first_name} {this.props.last_name}</div>
                         <input disabled={!this.props.isCoach} type="text" id="textfield2"placeholder='First Name' onChange={(e) => updateFirstName(e.target.value)}/> <input disabled={!this.props.isCoach} type="text" id="textfield3" placeholder="Last Name" onChange={(e) => updateLastName(e.target.value)}/>
+                        <div className="classYear">{this.props.classYear}</div>
+                        <input disabled={!this.props.isCoach} type="text" id="textfield12" placeholder='Class' onChange={(e) => updateClassYear(e.target.value)}/>
                         <div className="num position">{this.props.player_number} | {this.props.position}</div>
                         <input disabled={!this.props.isCoach} type="text" id="textfield4"placeholder='Jersey Number' onChange={(e) => updatePlayerNumber(e.target.value)}/> <input disabled={!this.props.isCoach} type="text" id="textfield5" placeholder="Position" onChange={(e) => updatePosition(e.target.value)}/>
                         <div className="height">Height: {this.props.player_height}</div>
@@ -113,7 +118,7 @@ class NewPlayer extends Component {
                         <div className="class">Varsity Roster Years: {this.props.roster_years}</div>
                         <input disabled={!this.props.isCoach} type="text" id="textfield7" placeholder='Roster Years' onChange={(e) => updateRosterYears(e.target.value)}/>
                     </div>
-                    <div className="favorites">
+                    <div className="new-player-favorites bottom">
                         <div className="nickname">Nickname: {this.props.player_nickname}</div>
                         <input disabled={!this.props.isCoach} type="text" id="textfield9" placeholder='Nickname' onChange={(e) => updateNickname(e.target.value)}/>
                         <div className="food">Favorite Food: {this.props.player_fav_food}</div>
@@ -123,16 +128,18 @@ class NewPlayer extends Component {
                         <div className="quote">Favorite Quote: {this.props.quote}</div>
                         <input disabled={!this.props.isCoach} type="text" id="textfield12" placeholder='Favorite Quote' onChange={(e) => updateFavQuote(e.target.value)}/>
                     </div>
-                </div>
 
-                 <Link to={`/roster/`}><button value={this.props.isCoach} onClick={() => this.handleSave()}>Save Player</button></Link>
-                <button value={this.props.isCoach} onClick={() => this.handleCancel()}>Cancel Changes</button>
+                    <div className="button-wrapper">
+                        <Link to={`/roster/`}><button className="buttons save" value={this.props.isCoach} onClick={() => this.handleSave()}>Save Player</button></Link>
+                        <button className="buttons cancel" value={this.props.isCoach} onClick={() => this.handleCancel()}>Cancel Changes</button>
+                    </div>
+                </div>
             </div>
         )
     }}
 
     let mapStateToProps = (state) => {
-        const {isCoach, original_player, player_id, first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_unique_fact, player_nickname} = state;
+        const {isCoach, classYear, original_player, player_id, first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_unique_fact, player_nickname} = state;
         return {
             isCoach,
             original_player,
@@ -147,8 +154,9 @@ class NewPlayer extends Component {
             player_fav_food,
             player_fav_quote,
             player_nickname,
-            player_unique_fact
+            player_unique_fact,
+            classYear
         };
     };
 
-    export default connect(mapStateToProps, {updateOriginalPlayer, updatePlayerID, updateFirstName, updateLastName, updatePlayerNumber, updatePlayerHeight, updatePosition, updateRosterYears, updatePlayerImage, updateFavFood, updateFavQuote, updateNickname, updateFact, updateEditMode})(NewPlayer);
+    export default connect(mapStateToProps, {updateOriginalPlayer, updatePlayerID, updateFirstName, updateLastName, updatePlayerNumber, updatePlayerHeight, updatePosition, updateRosterYears, updatePlayerImage, updateFavFood, updateFavQuote, updateNickname, updateFact, updateEditMode, updateClassYear})(NewPlayer);

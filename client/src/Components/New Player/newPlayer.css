@@ -18,16 +18,17 @@
         "pf  pf"
         "b   b";
     justify-items: center;
+    padding: 10px;
 
 }
 
-.pc-img {
+.new-pc-img {
     grid-area: pci;
     height: 400px;
     
 }
 
-.pc-img > img {
+.new-pc-img > img {
     height: 100%;
 }
 
@@ -38,7 +39,7 @@
     margin-top: 20px;
 }
 
-.player-favorites {
+.new-player-favorites {
     grid-area: pf;
 }
 
@@ -46,8 +47,8 @@
     grid-area: b;
 }
 
-.buttons.edit {
-    background-color: #138A36;
+.buttons.save {
+    background-color: #3c6e71;
     border-radius: 3px;
     /*box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1) 0 1px 2px 0 rgba(0,0,0,0.2);*/
     color: #f1f7ed;
@@ -56,8 +57,8 @@
     font-family: raleway;
 }
 
-.buttons.delete {
-    background-color: #d72638;
+.buttons.cancel {
+    background-color: #edae49;
     border-radius: 3px;
     /*box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1) 0 1px 2px 0 rgba(0,0,0,0.2);*/
     color: #f1f7ed;
