@@ -15,7 +15,7 @@
     justify-items: center;
 }
 
-.top-row {
+.edit-top-row {
     grid-area: tpr;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -24,7 +24,7 @@
     justify-items: center;
 }
 
-.middle-row {
+.edit-middle-row {
     grid-area: mdr;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -33,7 +33,7 @@
     justify-items: center;
 }
 
-.bottom-row {
+.edit-bottom-row {
     grid-area: btr;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -42,49 +42,53 @@
     justify-items: center;
 }
 
-.tl {
+.etl {
     grid-area: tl;
     width: 300px;
     display: flex;
+    flex-direction: column;
     font-weight: bold;
     align-items: center;
     justify-content: center;
     font-size: 2em;
 }
 
-.tm {
+.etm {
     grid-area: tm;
     width: 400px;
     display: flex;
+    flex-direction: column;
     font-weight: bold;
     align-items: center;
     justify-content: center;
     font-size: 2em;
 }
 
-.tr {
+.etr {
     grid-area: tr;
     width: 300px;
     display: flex;
+    flex-direction: column;
     font-weight: bold;
     align-items: center;
     justify-content: center;
     font-size: 2em;
 }
 
-.ml {
+.eml {
     grid-area: ml;
     width: auto;
     display: flex;
+    flex-direction: column;
     align-content: center;
     justify-content: center;
 }
 
-.middle-row > img {
+.edit-middle-row > img {
     height: 250px;
 }
 
-.mm {
+.emm {
     grid-area: mm;
     display: flex;
     align-items: center;
@@ -93,24 +97,26 @@
     font-weight: bold;
 }
 
-.mr {
+.emr {
     grid-area: mr;
     display: flex;
+    flex-direction: column;
     align-content: center;
     justify-content: center;
 }
 
-.bl {
+.ebl {
     grid-area: bl;
     width: 300px;
     display: flex;
+    flex-direction: column;
     font-weight: bold;
     align-items: center;
     justify-content: center;
     font-size: 4em;
 }
 
-.bm {
+.ebm {
     grid-area: bm;
     width: 300px;
     display: flex;
@@ -121,10 +127,11 @@
     font-size: 2em;
 }
 
-.br {
+.ebr {
     grid-area: br;
     width: 300px;
     display: flex;
+    flex-direction: column;
     font-weight: bold;
     align-items: center;
     justify-content: center;
@@ -135,8 +142,8 @@
     grid-area: b
 }
 
-.buttons.edit {
-    background-color: #138A36;
+.buttons.save {
+    background-color: #3c6e71;
     border-radius: 3px;
     /*box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1) 0 1px 2px 0 rgba(0,0,0,0.2);*/
     color: #f1f7ed;
@@ -145,8 +152,8 @@
     font-family: raleway;
 }
 
-.buttons.delete {
-    background-color: #d72638;
+.buttons.cancel {
+    background-color: #edae49;
     border-radius: 3px;
     /*box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1) 0 1px 2px 0 rgba(0,0,0,0.2);*/
     color: #f1f7ed;
@@ -160,7 +167,6 @@
     .gc-container {
        display: flex;
        flex-direction: column;
-       font-size: 1em;
     }
     
     .gameCard {

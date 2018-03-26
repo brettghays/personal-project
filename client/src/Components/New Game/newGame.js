@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import Navbar from '../Navbar/navbar';
 import {updateGameId, updateGuestTeam, updateHomeTeam, updateGameDate, updateHomeImage, updateGuestImage, updateHomeScore, updateGuestScore, updateGameTime, updateGameLocation, updateGameResult, updateOriginalGame,updateEditMode} from '../../Reducer/reducer';
-import '../Game Card/gameCard.css';
+import './newGame.css';
 
 class NewGame extends Component {
     componentDidMount() {
@@ -86,77 +86,76 @@ class NewGame extends Component {
         const {updateGameId, updateGameDate, updateGameLocation, updateGameTime, updateGuestImage, updateGuestScore, updateGuestTeam, updateHomeImage, updateHomeScore, updateHomeTeam, updateGameResult} = this.props;
     
         return(
-            <div className="gameCardContainer">
-                <div className="header1 oswald">
+            <div className="gc-container">
+                <div className="header oswald">
                     <p>Lehi Girls Basketball 2013-2014 Add Game</p>
                 </div>
 
                 <Navbar />
 
                         <div className="gameCard oswald">
-                            <div className="row1">
-                                <div className="one">
+                            <div className="new-top-row">
+                                <div className="ntl">
                                     <div>{this.props.guest_team}</div>
-                                    <div><input disabled={!this.props.isCoach} type="text" id="textfield1" placeholder='Guest Team' onChange={(e) => updateGuestTeam(e.target.value)}/></div>
+                                    <input disabled={!this.props.isCoach} type="text" id="textfield1" placeholder='Guest Team' onChange={(e) => updateGuestTeam(e.target.value)}/>
                                 </div>
                                
-                                <div className="two">
+                                <div className="ntm">
                                     <div>
                                         Game #{this.props.game_id} {this.props.game_date} - {this.props.game_result}
                                     </div>
-                                   <div>
-                                        <input disabled={!this.props.isCoach} type="text" id="textfield2"placeholder='ID' onChange={(e) => updateGameId(e.target.value)}/> <input disabled={!this.props.isCoach} type="text" id="textfield3" placeholder="Date" onChange={(e) => updateGameDate(e.target.value)}/> <input disabled={!this.props.isCoach} type="text" id="textfield4"placeholder="Result" onChange={(e) => updateGameResult(e.target.value)}/>
-                                   </div>    
+                                    <input disabled={!this.props.isCoach} type="text" id="textfield2"placeholder='ID' onChange={(e) => updateGameId(e.target.value)}/> <input disabled={!this.props.isCoach} type="text" id="textfield3" placeholder="Date" onChange={(e) => updateGameDate(e.target.value)}/> <input disabled={!this.props.isCoach} type="text" id="textfield4"placeholder="Result" onChange={(e) => updateGameResult(e.target.value)}/>   
                                 </div>
                                 
-                                <div className="three">
+                                <div className="ntr">
                                     <div>{this.props.home_team}</div>
-                                    <div><input disabled={!this.props.isCoach} type="text" id="textfield5" placeholder='Home Team' onChange={(e) => updateHomeTeam(e.target.value)}/></div>
+                                    <input disabled={!this.props.isCoach} type="text" id="textfield5" placeholder='Home Team' onChange={(e) => updateHomeTeam(e.target.value)}/>
                                 </div>
                                 
                             </div>
 
-                            <div className="row2">
-                                <div className="one">
+                            <div className="new-middle-row">
+                                <div className="nml">
                                     <img src={this.props.guest_image} alt="Guest Team"/>
-                                    <div><input disabled={!this.props.isCoach} type="text" id="textfield6" placeholder='Guest Image URL' onChange={(e) => updateGuestImage(e.target.value)}/></div>
+                                    <input disabled={!this.props.isCoach} type="text" id="textfield6" placeholder='Guest Image URL' onChange={(e) => updateGuestImage(e.target.value)}/>
                                 </div>
                                 
                                 
-                                <div className="two">@</div>
+                                <div className="nmm">@</div>
 
-                                <div className="three">
+                                <div className="nmr">
                                     <img src={this.props.home_image} alt="Home Team"/>
-                                    <div><input disabled={!this.props.isCoach} type="text" id="textfield7" placeholder='Home Image URL' onChange={(e) => updateHomeImage(e.target.value)}/></div>
+                                    <input disabled={!this.props.isCoach} type="text" id="textfield7" placeholder='Home Image URL' onChange={(e) => updateHomeImage(e.target.value)}/>
                                 </div>
                                 
                             </div>
 
-                            <div className="row3">
-                                <div className="one">
+                            <div className="new-bottom-row">
+                                <div className="nbl">
                                     <div>{this.props.guest_score}</div>
-                                    <div><input disabled={!this.props.isCoach} type="text" id="textfield8" placeholder='Guest Score' onChange={(e) => updateGuestScore(e.target.value)}/></div>   
+                                    <input disabled={!this.props.isCoach} type="text" id="textfield8" placeholder='Guest Score' onChange={(e) => updateGuestScore(e.target.value)}/>   
                                 </div>
                                 
-                                <div className="two">
-                                    <p>Final Score</p>
+                                <div className="nbm">
                                     <div>
                                         <p>{this.props.game_time}</p>
                                         <input disabled={!this.props.isCoach} type="text" id="textfield9" placeholder='Game Time' onChange={(e) => updateGameTime(e.target.value)}/>
+                                        <p>Final Score</p>
                                         <p>{this.props.game_location}</p>
                                         <input disabled={!this.props.isCoach} type="text" id="textfield10" placeholder='Location' onChange={(e) => updateGameLocation(e.target.value)}/>
                                     </div>  
                                 </div>
 
-                                <div className="three">
+                                <div className="nbr">
                                     <div>{this.props.home_score}</div>
-                                    <div><input disabled={!this.props.isCoach} type="text"  id="textfield11" placeholder='Home Score' onChange={(e) => updateHomeScore(e.target.value)}/></div>    
+                                    <input disabled={!this.props.isCoach} type="text"  id="textfield11" placeholder='Home Score' onChange={(e) => updateHomeScore(e.target.value)}/>    
                                 </div>    
                             </div>
+                            <div className="button-wrapper">
+                                <button className="buttons save" value={this.props.isCoach}onClick={() => this.handleSave()}>Save Game</button>
+                                <button className="buttons cancel" value={this.props.isCoach} onClick={() => this.handleCancel()}>Cancel Changes</button>
+                            </div>
                         </div>
-
-                <Link to={`/schedule/`}><button value={this.props.isCoach} onClick={() => this.handleSave()}>Save Game</button></Link>
-                <button value={this.props.isCoach} onClick={() => this.handleCancel()}>Cancel Changes</button>
             </div>
         )
     }
