@@ -35,7 +35,7 @@ class Landing extends Component {
                 <Navbar />
 
                 <div className="image oswald">
-                    <img src={teamPic} alt="team pic"/>
+                    <img className="object-fit_contain"src={teamPic} alt="team pic"/>
                 </div>
                 {/* <div className="mission">mission</div> */}
                 <div className="schedule oswald">

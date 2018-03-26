@@ -4,7 +4,7 @@
     display: grid;
     grid-gap: 5px;
     grid-template-columns: 200px repeat(11, 1fr);
-    grid-template-rows: .75fr 2.25fr 2.25fr 1.5fr;
+    
     grid-template-areas: 
       "n h h h h h h h h h h h"
       "n i i i i i i i s s s s"
@@ -14,19 +14,26 @@
   .image {
     grid-area: i;
     font-size: 2em;
+    height: 100%;
+    width: auto;
     display: flex;
     justify-content: center;
+    padding: 10px;
     border-bottom: 5px #605b56 solid;
   }
   
   .social {
     grid-area: m;
+    width: auto;
+    height: 100%;
     font-size: 2em;
     padding: 10px;
   }
   
   .schedule {
     grid-area: s;
+    height: 100%;
+    width: auto;
     font-size: 2em;
     padding: 10px;
     border-bottom: 5px #605b56 solid;
@@ -34,6 +41,8 @@
   
   .player {
     grid-area: p;
+    height: 100%;
+    width: auto;
     font-size: 2em;
     padding: 10px;
     border-bottom: 5px #605b56 solid;
@@ -42,40 +51,45 @@
   
   .coach {
     grid-area: c;
+    height: 100%;
+    width: auto;
     font-size: 2em;
     padding: 10px;
   }
 
   .image > img {
-    max-width: 95%;
-    max-height: 95%;
-    margin: 10px;
+    height: 95%;
+    width: 95%;
+    margin-top: 10px;
+    padding-bottom: 20px;
   }
-}
+  }
 
   @media only screen and (max-width: 768px) {
     .container {
        height: 100vh;
        display: grid;
-       grid-template-areas: 
+       
+       grid-template-areas:
         'h'
-        'n'
+        'n' 
+        'i'
         's'
         'p'
-        'i'
-        'c'
-        'm';
-      
-       
+        'm'
+        'c';    
     }
 
     .navbar {
         padding-bottom: 40px;
     }
-
+    
     .image > img {
-      max-width: 95%;
-      max-height: 95%;
-      margin: 10px;
+      height: 95%;
+      width: 95%;
+      margin-top: 40px;
+      padding-bottom: 20px;
     }
+
+    
  }
