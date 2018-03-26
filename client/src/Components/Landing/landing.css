@@ -45,6 +45,12 @@
     font-size: 2em;
     padding: 10px;
   }
+
+  .image > img {
+    max-width: 95%;
+    max-height: 95%;
+    margin: 10px;
+  }
 }
 
   @media only screen and (max-width: 768px) {
@@ -54,15 +60,22 @@
        grid-template-areas: 
         'h'
         'n'
-        'i'
         's'
         'p'
+        'i'
         'c'
-        'm'
+        'm';
+      
        
     }
 
     .navbar {
         padding-bottom: 40px;
+    }
+
+    .image > img {
+      max-width: 95%;
+      max-height: 95%;
+      margin: 10px;
     }
  }
