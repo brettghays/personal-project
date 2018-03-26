@@ -1,0 +1,50 @@
+@media only screen and (min-width: 769px) {
+.navbar {
+    display: flex;
+    flex-direction: column;
+    grid-area: n;
+    background-color: #382268;
+    font-size: 1.75em;
+    color: #f1f7ed;
+    padding: 15px;
+}
+
+.Navbar_Items {
+    display: flex;
+    flex-direction: column;
+    padding-right: 8px;
+}
+
+.Navbar_Items-Bottom {
+    margin-top: 300px;
+    
+}
+
+.Navbar__Link-toggle {
+    display: none;
+}
+
+}
+
+@media only screen and (max-width: 768px) {
+   .navbar {
+       display: flex;
+       flex-direction: row;
+       background-color: #382268;
+       font-size: 1.5em;
+       color: #f1f7ed;
+       padding: 15px;
+       height: 55%;
+   }
+
+   .Navbar__Items {
+       display: flex;
+       flex-direction: column;
+   }
+
+   .Navbar_Items-Bottom {
+       display: flex;
+       flex-direction: column;
+       margin-left: auto;
+   }
+}

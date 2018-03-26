@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import Navbar from '../Navbar/navbar';
-import {updateOriginalPlayer, updatePlayerID, updateFirstName, updateLastName, updatePlayerNumber, updatePlayerImage, updatePlayerHeight, updatePosition, updateRosterYears, updateFavFood, updateFavQuote, updateFact, updateNickname, updateFirstname, updateLastname, updateEditMode} from '../../Reducer/reducer';
+import {updateOriginalPlayer, updatePlayerID, updateFirstName, updateLastName, updatePlayerNumber, updatePlayerImage, updatePlayerHeight, updatePosition, updateRosterYears, updateFavFood, updateFavQuote, updateFact, updateNickname, updateFirstname, updateLastname, updateEditMode, updateClassYear} from '../../Reducer/reducer';
 
 class PlayerCard extends Component {
     //This will actually be using a Get request to get info from DB and setting on state instead of mapping
@@ -11,7 +11,7 @@ class PlayerCard extends Component {
         axios.get(`/api/player/${this.props.match.params.id}`)
             .then(res => {
                 console.log(res.data)
-                const {player_id, first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_nickname, player_unique_fact} = res.data;
+                const {player_id, first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_nickname, player_unique_fact, classYear} = res.data;
 
                 this.props.updatePlayerImage(player_image);
                 this.props.updatePlayerID(player_id);
@@ -25,6 +25,7 @@ class PlayerCard extends Component {
                 this.props.updateFavQuote(player_fav_quote);
                 this.props.updateNickname(player_nickname);
                 this.props.updateFact(player_unique_fact);
+                this.props.updateClassYear(classYear);
                 this.props.updateOriginalPlayer(res.data);
             })
             .catch(err => console.log(err))
@@ -44,7 +45,8 @@ class PlayerCard extends Component {
             player_fav_food: this.props.player_fav_food,
             player_fav_quote: this.props.player_fav_quote,
             player_unique_fact: this.props.player_unique_fact,
-            player_nickname: this.props.player_nickname
+            player_nickname: this.props.player_nickname,
+            classyear: this.props.classYear
         }
         console.log(player_nickname)
         console.log('This is the body: ',body);
@@ -67,6 +69,7 @@ class PlayerCard extends Component {
         document.getElementById("textfield9").value = "";
         document.getElementById("textfield10").value = "";
         document.getElementById("textfield11").value = "";
+        document.getElementById("textfield12").value = "";
     };
 
     /* handleEdit() {
@@ -75,7 +78,7 @@ class PlayerCard extends Component {
     }; */
 
     handleCancel(){
-        const {player_id, first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_nickname, player_unique_fact} = this.props.original_player;
+        const {player_id, first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_nickname, player_unique_fact, classYear} = this.props.original_player;
 
         this.props.updatePlayerImage(player_image);
         this.props.updatePlayerID(player_id);
@@ -89,6 +92,7 @@ class PlayerCard extends Component {
         this.props.updateFavQuote(player_fav_quote);
         this.props.updateNickname(player_nickname);
         this.props.updateFact(player_unique_fact);
+        this.props.updateClassYear(classYear);
         document.getElementById("textfield1").value = "";
         document.getElementById("textfield2").value = "";
         document.getElementById("textfield3").value = "";
@@ -100,6 +104,7 @@ class PlayerCard extends Component {
         document.getElementById("textfield9").value = "";
         document.getElementById("textfield10").value = "";
         document.getElementById("textfield11").value = "";
+        document.getElementById("textfield12").value = "";
         //this.props.updateGameCard('view');
     }
 
@@ -113,7 +118,7 @@ class PlayerCard extends Component {
     
     render() {  
         //const edit = !!this.props.match.params.edit;
-        const {updateOriginalPlayer, updatePlayerID, updateFirstName, updateLastName, updatePlayerNumber, updatePlayerHeight, updatePosition, updateRosterYears, updatePlayerImage, updateFavFood, updateFavQuote, updateNickname, updateFact} = this.props;
+        const {updateOriginalPlayer, updatePlayerID, updateFirstName, updateLastName, updatePlayerNumber, updatePlayerHeight, updatePosition, updateRosterYears, updatePlayerImage, updateFavFood, updateFavQuote, updateNickname, updateFact, updateClassYear} = this.props;
 
         return (
             <div className="container">
@@ -131,6 +136,8 @@ class PlayerCard extends Component {
                     <div className="info">
                         <div className="name">{this.props.first_name} {this.props.last_name}</div>
                         <input disabled={!this.props.isCoach} type="text" id="textfield2"placeholder='First Name' onChange={(e) => updateFirstName(e.target.value)}/> <input disabled={!this.props.isCoach} type="text" id="textfield3" placeholder="Last Name" onChange={(e) => updateLastName(e.target.value)}/>
+                        <div className="classYear">{this.props.classYear}</div>
+                        <input disabled={!this.props.isCoach} type="text" id="textfield12" placeholder='Class' onChange={(e) => updateClassYear(e.target.value)}/>
                         <div className="num position">{this.props.player_number} | {this.props.position}</div>
                         <input disabled={!this.props.isCoach} type="text" id="textfield4"placeholder='Jersey Number' onChange={(e) => updatePlayerNumber(e.target.value)}/> <input disabled={!this.props.isCoach} type="text" id="textfield5" placeholder="Position" onChange={(e) => updatePosition(e.target.value)}/>
                         <div className="height">Height: {this.props.player_height}</div>
@@ -158,7 +165,7 @@ class PlayerCard extends Component {
     }}
 
     let mapStateToProps = (state) => {
-        const {isCoach, original_player, player_id, first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_unique_fact, player_nickname} = state;
+        const {isCoach, classYear, original_player, player_id, first_name, last_name, player_number, player_height, position, roster_years, player_image, player_fav_food, player_fav_quote, player_unique_fact, player_nickname} = state;
         return {
             isCoach,
             original_player,
@@ -173,8 +180,9 @@ class PlayerCard extends Component {
             player_fav_food,
             player_fav_quote,
             player_nickname,
-            player_unique_fact
+            player_unique_fact,
+            classYear
         };
     };
 
-    export default connect(mapStateToProps, {updateOriginalPlayer, updatePlayerID, updateFirstName, updateLastName, updatePlayerNumber, updatePlayerHeight, updatePosition, updateRosterYears, updatePlayerImage, updateFavFood, updateFavQuote, updateNickname, updateFact, updateEditMode})(PlayerCard);
+    export default connect(mapStateToProps, {updateClassYear, updateOriginalPlayer, updatePlayerID, updateFirstName, updateLastName, updatePlayerNumber, updatePlayerHeight, updatePosition, updateRosterYears, updatePlayerImage, updateFavFood, updateFavQuote, updateNickname, updateFact, updateEditMode})(PlayerCard);

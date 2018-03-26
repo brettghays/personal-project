@@ -39,7 +39,7 @@ class Roster extends Component {
                     </td>
 
                     <td className="raleway e">
-                        {player.class}
+                        {player.classyear}
                     </td>
 
                     <td className="raleway f">

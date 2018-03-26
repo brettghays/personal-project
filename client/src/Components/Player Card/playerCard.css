@@ -1,0 +1,86 @@
+.pc-container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr;
+    grid-template-areas: 
+        "n  h   h"
+        "n  pc  pc"
+        "n  pc  pc"
+        "n  pc  pc";
+}
+
+.playerCard {
+    grid-area: pc;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        "pci pi"
+        "pf  pf"
+        "b   b";
+    justify-items: center;
+
+}
+
+.pc-img {
+    grid-area: pci;
+    height: 400px;
+    
+}
+
+.pc-img > img {
+    height: 100%;
+}
+
+.player-info {
+    grid-area: pi;
+    font-size: 1.5em;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.player-favorites {
+    grid-area: pf;
+}
+
+.button-wrapper {
+    grid-area: b;
+}
+
+.buttons.edit {
+    background-color: #138A36;
+    border-radius: 3px;
+    /*box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1) 0 1px 2px 0 rgba(0,0,0,0.2);*/
+    color: #f1f7ed;
+    margin: 10px;
+    font-size: 1.1em;
+    font-family: raleway;
+}
+
+.buttons.delete {
+    background-color: #d72638;
+    border-radius: 3px;
+    /*box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1) 0 1px 2px 0 rgba(0,0,0,0.2);*/
+    color: #f1f7ed;
+    margin: 10px;
+    font-size: 1.1em;
+    font-family: raleway;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .pc-container {
+       display: flex;
+       flex-direction: column;
+    }
+    
+    .playerCard {
+       display: flex;
+       flex-direction: column; 
+       align-items: center;   
+    } 
+
+    .player-info {
+        font-size: 1em;
+        justify-content: center;
+    }
+}

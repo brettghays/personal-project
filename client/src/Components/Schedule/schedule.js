@@ -5,6 +5,8 @@ import axios from 'axios';
 import Navbar from '../Navbar/navbar';
 import {updateSchedule} from '../../Reducer/reducer';
 
+import './schedule.css'
+
 class Schedule extends Component {
     componentDidMount(){
         axios.get('/api/games')
@@ -24,33 +26,33 @@ class Schedule extends Component {
     render() {
         const schedule = this.props.schedule.map(game => {
             return (
-                <div className="childGame" key={game.game_id}>
-                    <div className="raleway a">
-                        <p>{game.game_id}. {game.game_date}</p>
-                    </div>
+                <tr className="childGame" key={game.game_id}>
+                    <td className="raleway">
+                        {game.game_id}. {game.game_date}
+                    </td>
 
-                    <div className="raleway b">
-                        <p>{game.game_time}</p>
-                    </div>
+                    <td className="raleway">
+                        {game.game_time}
+                    </td>
 
-                    <div className="raleway c">
+                    <td className="raleway">
                         <Link to = {`/schedule/${game.game_id}`}>
-                            <p>{game.guest_team} @ {game.home_team}</p>
+                            {game.guest_team} @ {game.home_team}
                         </Link>
-                    </div>
+                    </td>
 
-                    <div className="raleway d">
-                        <p>{game.game_location}</p>
-                    </div>
+                    <td className="raleway">
+                        {game.game_location}
+                    </td>
 
-                    <div className="raleway e">
-                        <p>{game.guest_score} - {game.home_score}</p>
-                    </div>
+                    <td className="raleway">
+                        {game.guest_score} - {game.home_score}
+                    </td>
 
-                    <div className="raleway f">
-                        <p>{game.game_result}</p>
-                    </div>
-                </div>
+                    <td className="raleway">
+                        {game.game_result}
+                    </td>
+                </tr>
             )
         })
         return(
@@ -59,19 +61,22 @@ class Schedule extends Component {
             
                 <Navbar />
             
-                <div className="col-header oswald u">Date</div>
-                <div className="col-header oswald v">Time</div>
-                <div className="col-header oswald w">Game</div>
-                <div className="col-header oswald x">Location</div>
-                <div className="col-header oswald y">Score</div>
-                <div className="col-header oswald z">Result</div> 
-
-                <div className="gameParent">{schedule}</div>
-
-                <div className="buttons">
-                    <Link to='/edit/newGame'><button value={this.props.isCoach}>Create New Game</button></Link>
-                </div>
-            
+                <table className="bottomBorder">
+                    <thead>
+                        <tr>
+                            <th className="oswald">Date</th>
+                            <th className="oswald">Time</th>
+                            <th className="oswald">Game</th>
+                            <th className="oswald">Location</th>
+                            <th className="oswald">Score</th>
+                            <th className="oswald">Result</th> 
+                        </tr>
+                    </thead>
+                    <tfoot>
+                    <Link to='/edit/newGame'><button className = "buttons new" value={this.props.isCoach}>Create New Game</button></Link>
+                    </tfoot>
+                    {schedule}
+                </table>
             </div>
         )
     }

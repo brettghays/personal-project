@@ -40,7 +40,10 @@ const initialState = {
     player_fav_food: '',
     player_fav_quote: '',
     player_unique_fact: '',
-    player_nickname: ''
+    player_nickname: '',
+    classYear: '',
+    //Navbar props
+    display: false
 }
 
 //set up action types
@@ -84,6 +87,8 @@ const UPDATE_PLAYER_FAV_FOOD = 'UPDATE_PLAYER_FAV_FOOD';
 const UPDATE_PLAYER_FAV_QUOTE = 'UPDATE_PLAYER_FAV_QUOTE';
 const UPDATE_UNIQUE_FACT = 'UPDATE_UNIQUE_FACT';
 const UPDATE_NICKNAME = 'UPDATE_NICKNAME';
+const UPDATE_CLASSYEAR = 'UPDATE_CLASSYEAR';
+const UPDATE_DISPLAY = 'UPDATE_DISPLAY';
 
 //set up function reducer
 function reducer(state=initialState, action) {
@@ -199,6 +204,13 @@ function reducer(state=initialState, action) {
 
         case UPDATE_NICKNAME:
             return Object.assign({}, state, {player_nickname: action.payload});
+
+        case UPDATE_CLASSYEAR:
+            return Object.assign({}, state, {classYear: action.payload});
+
+        //Navbar Cases
+        case UPDATE_DISPLAY:
+            return Object.assign({}, state, {display: action.payload});
 
         default: return state;
     }
@@ -427,6 +439,18 @@ export function updateNickname (nickname) {
     return {
         type: UPDATE_NICKNAME,
         payload: nickname
+    }
+}
+export function updateClassYear (classYear) {
+    return {
+        type: UPDATE_CLASSYEAR,
+        payload: classYear
+    }
+}
+export function updateDisplay (display) {
+    return {
+        type: UPDATE_DISPLAY,
+        payload: display
     }
 }
 export default reducer;
