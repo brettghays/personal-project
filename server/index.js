@@ -167,7 +167,7 @@ app.patch('/api/player/:id', (req, res) => {
     const dbInstance = app.get('db');
     const {first_name,last_name,player_number,player_height,position,roster_years,player_image,player_fav_food,player_fav_quote,player_unique_fact,player_nickname,classyear} = req.body;
     const playerID = req.params.id;
-    console.log('This is the nickname: ', player_nickname)
+    console.log(req.body)
 
     dbInstance.update_player([playerID, first_name,last_name,player_number,player_height,position,roster_years,player_image,player_fav_food,player_fav_quote,player_unique_fact,player_nickname,classyear])
         .then(() => {

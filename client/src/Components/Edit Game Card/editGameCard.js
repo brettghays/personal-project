@@ -143,10 +143,9 @@ class EditGameCard extends Component {
                         <input disabled={!this.props.isCoach} type="text" id="textfield6" placeholder='Guest Image URL' onChange={(e) => updateGuestImage(e.target.value)}/>            
                         
                         <div className="emm">@</div>
-                        <div className="emr">
-                            <img src={this.props.home_image} alt="Home Team"/>
-                            <input disabled={!this.props.isCoach} type="text" id="textfield7" placeholder='Home Image URL' onChange={(e) => updateHomeImage(e.target.value)}/>
-                        </div>    
+                        
+                        <img className="emr" src={this.props.home_image} alt="Home Team"/>
+                        <input disabled={!this.props.isCoach} type="text" id="textfield7" placeholder='Home Image URL' onChange={(e) => updateHomeImage(e.target.value)}/>  
                     </div>
                     <div className="edit-bottom-row">
                         <div className="ebl">
