@@ -26,8 +26,8 @@ class Navbar extends Component {
 
                 <nav className="Navbar_Items-Bottom">
                     <div><Link to = '/user' className = 'links' value={this.props.sessionid}>Profile</Link></div>
-                    <div><a href = 'http://localhost:80/api/auth' className = 'links'>Register / Login</a></div>
-                    <div><a href = 'http://localhost:80/api/auth/logout' className = 'links'>Signout</a></div>
+                    <div><a href = '/api/auth' className = 'links'>Register / Login</a></div>
+                    <div><a href = '/api/auth/logout' className = 'links'>Signout</a></div>
                 </nav>
             </div>
         )
