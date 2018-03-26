@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:400|Raleway:500');
 
+
 .oswald {
   font-family: Oswald;
 }
@@ -9,163 +10,12 @@
   font-size: 1.5em;
 }
 
-.App > p {
-  font-family: Raleway;
-  color: purple;
-}
-
-.container {
-  height: 100vh;
-  display: grid;
-  grid-gap: 5px;
-  grid-template-columns: 200px repeat(11, 1fr);
-  grid-template-rows: .75fr 2.25fr 2.25fr 1.5fr;
-  grid-template-areas: 
-    "n h h h h h h h h h h h"
-    "n i i i i i i i s s s s"
-    "n i i i i i i i p p p p"
-    "n c c c c c c c m m m m";
-}
-
-.child-container {
-  height: 100vh;
-  display: grid;
-  grid-gap: 5px;
-  grid-template-columns: 200px repeat(6, auto);
-  grid-template-rows: .75fr .75fr 6.25fr;
-  grid-template-areas: 
-    "n h h h h h h"
-    "n u v w x y z"
-    "n a b c d e f";
-}
-
 .header {
   grid-area: h;
   background-color: #605b56;
   font-size: 2.25em;
-  
   text-align: right;
   padding: 10px
-}
-
-
-.image {
-  grid-area: i;
-  background-color: #f1f7ed;
-  font-size: 2em;
-  border: 1px black solid;
-  display: flex;
-  justify-content: space-around;
-}
-
-.social {
-  grid-area: m;
-  background-color: #f1f7ed;
-  font-size: 2em;
-  border: 1px black solid;
-  padding: 10px;
-}
-
-.schedule {
-  grid-area: s;
-  background-color: #f1f7ed;
-  font-size: 2em;
-  border: 1px black solid;
-  padding: 10px;
-}
-
-.player {
-  grid-area: p;
-  background-color: #f1f7ed;
-  font-size: 2em;
-  border: 1px black solid;
-  padding: 10px;
-}
-
-.col-header {
-  font-weight: bold;
-  text-align: center;
-  text-decoration-line: underline;
-}
-
-.coach {
-  grid-area: c;
-  background-color: #f1f7ed;
-  font-size: 2em;
-  border: 1px black solid;
-  padding: 10px;
-}
-
-.a {
-  grid-area: a;
-  
-}
-
-.b{
-  grid-area: b;
-  
-}
-
-.c {
-  grid-area: c;
-  
-}
-
-.d {
-  grid-area: d;
- 
-}
-
-.e {
-  grid-area: e;
-  
-}
-
-.f {
-  grid-area: f;
-  
-}
-
-.u {
-  grid-area: u;
-  background-color: #f1f7ed;
-  font-size: 2em;
-  border: 1px black solid;
-}
-
-.v {
-  grid-area: v;
-  background-color: #f1f7ed;
-  font-size: 2em;
-  border: 1px black solid;
-}
-
-.w {
-  grid-area: w;
-  background-color: #f1f7ed;
-  font-size: 2em;
-  border: 1px black solid;
-}
-
-.x {
-  grid-area: x;
-  background-color: #f1f7ed;
-  font-size: 2em;
-  border: 1px black solid;
-}
-
-.y {
-  grid-area: y;
-  background-color: #f1f7ed;
-  font-size: 2em;
-  border: 1px black solid;
-}
-
-.z {
-  grid-area: z;
-  background-color: #f1f7ed;
-  font-size: 2em;
-  border: 1px black solid;
 }
 
 .links {
@@ -202,15 +52,6 @@ p {
   text-decoration: none;
 }
 
-
-.child1 {
-  display: flex;
-  justify-content: space-around;
-  align-content: left;
-  border: 2px black solid;
-  height: 300px;
-  width: 333.2px;
-}
 
 .info {
   display: flex;
@@ -261,5 +102,6 @@ a[value=false]{
   display: none;
 }
  */
+
 
 

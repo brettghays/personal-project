@@ -50,12 +50,12 @@ class Roster extends Component {
             )
         })
         return(
-            <div className="child-container">
+            <div className="roster-container">
             <div className="header oswald">Lehi Girls Basketball 2013-2014 Roster</div>
             
             <Navbar />
 
-            <table className="bottomBorder">
+            <table className="table bottomBorder">
                 <thead>
                     <tr>
                         <th className="oswald">#</th>

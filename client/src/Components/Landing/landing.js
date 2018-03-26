@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import teamPic from '../../Assets/jvVarsity.jpg'
 import Navbar from '../Navbar/navbar';
+import './landing.css'
 import Lehi from '../../Assets/lehi-logo.jpg';
 import Judge from '../../Assets/judge-memorial-logo.jpg';
 import Kaylie from '../../Assets/Kaylie.jpg';
@@ -60,7 +61,7 @@ class Landing extends Component {
                     </div>
                 </div>
                 <div className="social oswald">Follow Us</div>
-                <div className="coach oswald">
+                <div className="coach raleway">
                     <p>Congrats on making it to State! We have worked hard to achieve this moment.</p>
                     <p>Bus leaves Monday at 11:00 AM. Rest up and let's shock the world!</p>
                 </div>

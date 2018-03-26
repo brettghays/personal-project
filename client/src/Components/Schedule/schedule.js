@@ -56,12 +56,12 @@ class Schedule extends Component {
             )
         })
         return(
-            <div className="child-container">
+            <div className="schedule-container">
                 <div className="header oswald">Lehi Girls Basketball 2013-2014 Schedule</div>
             
                 <Navbar />
             
-                <table className="bottomBorder">
+                <table className="table bottomBorder">
                     <thead>
                         <tr>
                             <th className="oswald">Date</th>

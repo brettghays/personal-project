@@ -1,4 +1,17 @@
 @media only screen and (min-width: 769px) {
+    .roster-container {
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        grid-template-areas: 
+            "n  h"
+            "n  t";
+    }
+
+    .table {
+        grid-area: t;
+    }
+    
     table {
         border-collapse: collapse;
         display: table;
@@ -52,6 +65,7 @@
     } 
 }
 @media only screen and (max-width: 768px) {
+    
     table, thead, tbody, th, td, tr {
         display: block;
     }
