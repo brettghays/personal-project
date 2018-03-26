@@ -16,11 +16,15 @@
 }
 
 .Navbar_Items-Bottom {
-    margin-top: 300px;
+    margin-top: auto;
     
 }
 
-.Navbar__Link-toggle {
+.Navbar_Link-toggle {
+    display: none;
+}
+
+.menu {
     display: none;
 }
 
@@ -29,7 +33,7 @@
 @media only screen and (max-width: 768px) {
    .navbar {
        display: flex;
-       flex-direction: row;
+       flex-direction: column;
        background-color: #382268;
        font-size: 1.5em;
        color: #f1f7ed;
@@ -37,14 +41,29 @@
        height: 55%;
    }
 
-   .Navbar__Items {
-       display: flex;
-       flex-direction: column;
+   .Navbar_Items {
+       display: none;
    }
 
    .Navbar_Items-Bottom {
-       display: flex;
-       flex-direction: column;
-       margin-left: auto;
+       margin-left: 0;
+       margin-top: 100px;
    }
+
+   .menu {
+       display: initial;
+   }
+
+   .Navbar_ToggleShow {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+    .Navbar_Link-toggle {
+    align-self: flex-end;
+    display: initial;
+    position: absolute;
+    cursor: pointer;
+   } 
 }

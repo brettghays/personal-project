@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import FontAwesome from 'react-fontawesome';
@@ -9,25 +9,30 @@ import './navbar.css';
 
 class Navbar extends Component {
     classToggle() {
-        const navs = document.querySelectorAll('.Navbar__Items')
+        const navs = document.querySelectorAll('.Navbar_Items')
         
-        navs.forEach(nav => nav.classList.toggle('Navbar__ToggleShow'));
+        navs.forEach(nav => nav.classList.toggle('Navbar_ToggleShow'));
 
     }
  
     render(){
         return(
             <div className="navbar oswald">
+                <div onClick={() => this.classToggle()} className="Navbar_Link Navbar_Link-toggle">
+                    <FontAwesome name="bars" size="2x"/>
+                </div>
+                
                 <nav className="Navbar_Items">
-                    <div><Link to = '/' className = 'links'>Home</Link></div>
-                    <div><Link to = '/roster' className = 'links'>Roster</Link></div>
-                    <div><Link to = '/schedule' className = 'links'>Schedule</Link></div>
+                    
+                    <div className = 'Navbar_Link'><NavLink activeClassName='currentNav' to = '/' className = 'links'>Home</NavLink></div>
+                    <div className = 'Navbar_Link'><NavLink activeClassName='currentNav' to = '/roster' className = 'links'>Roster</NavLink></div>
+                    <div className = 'Navbar_Link'><NavLink activeClassName='currentNav' to = '/schedule' className = 'links'>Schedule</NavLink></div>
                 </nav>
 
-                <nav className="Navbar_Items-Bottom">
-                    <div><Link to = '/user' className = 'links' value={this.props.sessionid}>Profile</Link></div>
-                    <div><a href = '/api/auth' className = 'links'>Register / Login</a></div>
-                    <div><a href = '/api/auth/logout' className = 'links'>Signout</a></div>
+                <nav className="Navbar_Items Navbar_Items-Bottom">
+                    <div className = 'Navbar_Link'><NavLink activeClassName='currentNav' to = '/user' className = 'links' value={this.props.sessionid}>Profile</NavLink></div>
+                    <div className = 'Navbar_Link'><a href = 'http://localhost:80/api/auth' className = 'links'>Register / Login</a></div>
+                    <div className = 'Navbar_Link'><a href = 'http://localhost:80/api/auth/logout' className = 'links'>Signout</a></div>
                 </nav>
             </div>
         )
