@@ -1,59 +1,170 @@
-.gameCardContainer {
+.gc-container {
+    height: 100vh;
     display: grid;
-    grid-template-columns: repeat(12, [col-start] 1fr);
-    height: 100%;
-    width: 100%;
-}
-
-.header1 {
-    grid-column: col-start 2/ span 12;
-    grid-row: 1;
-    margin-left: auto;
-}
-
-.navbar1 {
-    grid-column: col-start;
-    grid-row: 1 / 3;
-    background-color: purple;
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    grid-gap: 5px;
+    grid-template-areas:
+        "n  h   h   h"
+        "n  tpr tpr tpr"
+        "n  mdr mdr mdr"
+        "n  btr btr btr "
+        "n  b   b   b";
 }
 
 .gameCard {
-    grid-column: col-start 2 / span 10;
-    grid-row: 2;
+    justify-items: center;
 }
 
-.row1 {
+.top-row {
+    grid-area: tpr;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "tl tm  tr";
+    justify-items: center;
+}
+
+.middle-row {
+    grid-area: mdr;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "ml mm  mr";
+    justify-items: center;
+}
+
+.bottom-row {
+    grid-area: btr;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "bl bm  br";
+    justify-items: center;
+}
+
+.tl {
+    grid-area: tl;
+    width: 300px;
     display: flex;
-    justify-content: space-around;
-    height: 1fr;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
 }
 
-.row2 {
+.tm {
+    grid-area: tm;
+    width: 400px;
     display: flex;
-    justify-content: space-around;
-    height: 284px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
 }
 
-.row3 {
+.tr {
+    grid-area: tr;
+    width: 300px;
     display: flex;
-    justify-content: space-around;
-    height: 1fr;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
 }
 
-.one {
-    grid-column: col-start 2 / span 4;
+.ml {
+    grid-area: ml;
+    width: auto;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.middle-row > img {
+    height: 250px;
+}
+
+.mm {
+    grid-area: mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.mr {
+    grid-area: mr;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.bl {
+    grid-area: bl;
+    width: 300px;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    font-size: 4em;
+}
+
+.bm {
+    grid-area: bm;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+}
+
+.br {
+    grid-area: br;
+    width: 300px;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    font-size: 4em;
+}
+
+.button-wrapper {
+    grid-area: b
+}
+
+.buttons.edit {
+    background-color: #138A36;
+    border-radius: 3px;
+    /*box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1) 0 1px 2px 0 rgba(0,0,0,0.2);*/
+    color: #f1f7ed;
+    margin: 10px;
+    font-size: 1.1em;
+    font-family: raleway;
+}
+
+.buttons.delete {
+    background-color: #d72638;
+    border-radius: 3px;
+    /*box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1) 0 1px 2px 0 rgba(0,0,0,0.2);*/
+    color: #f1f7ed;
+    margin: 10px;
+    font-size: 1.1em;
+    font-family: raleway;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .gc-container {
+       display: flex;
+       flex-direction: column;
+    }
     
+    .gameCard {
+       display: flex;
+       flex-direction: column; 
+       align-items: center;   
+    } 
 }
-
-.two {
-    grid-column: col-start 6 / span 3;
-}
-
-.three {
-    grid-column: col-start 9 / span 4;
-}
-
-/* img {
-    height: 284px;
-    width: 284px;
-} */

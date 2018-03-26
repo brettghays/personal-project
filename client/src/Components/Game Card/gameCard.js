@@ -112,37 +112,41 @@ class GameCard extends Component {
         const {updateGameId, updateGameDate, updateGameLocation, updateGameTime, updateGuestImage, updateGuestScore, updateGuestTeam, updateHomeImage, updateHomeScore, updateHomeTeam, updateGameResult} = this.props;
     
         return(
-            <div className="gameCardContainer">
-                <div className="header1 oswald">
+            <div className="gc-container">
+                <div className="header oswald">
                     <p>Lehi Girls Basketball 2013-2014 Game Details</p>
                 </div>
 
                 <Navbar />
 
                 <div className="gameCard oswald">
-                    <div className="row1">
-                        <div className="one">{this.props.guest_team}</div>
-                        <div className="two">Game #{this.props.game_id} {this.props.game_date} - {this.props.game_result}</div>
-                        <div className="three">{this.props.home_team}</div>
+                    <div className="top-row">
+                        <div className="tl">{this.props.guest_team}</div>
+                        <div className="tm">Game #{this.props.game_id} {this.props.game_date} - {this.props.game_result}</div>
+                        <div className="tr">{this.props.home_team}</div>
                     </div>
-                    <div className="row2">
-                        <img src={this.props.guest_image} alt="Guest Team"/>
-                        <div className="two">@</div>
-                        <img src={this.props.home_image} alt="Home Team"/>
+                    <div className="middle-row">
+                        <img className='ml' src={this.props.guest_image} alt="Guest Team"/>
+                        <div className="mm">@</div>
+                        <img className='mr' src={this.props.home_image} alt="Home Team"/>
                     </div>
-                    <div className="row3">
-                        <div className="one">{this.props.guest_score}</div>
-                        <div className="two">
-                            <p>Final Score</p>
+                    <div className="bottom-row">
+                        <div className="bl">{this.props.guest_score}</div>
+                        <div className="bm">
                             <p>{this.props.game_time}</p>
+                            <p>Final Score</p>
                             <p>{this.props.game_location}</p>
                         </div>
-                        <div className="three">{this.props.home_score}</div>
+                        <div className="br">{this.props.home_score}</div>
+                    </div>
+
+                    <div className="button-wrapper">
+                        <Link to={`/edit/game/${this.props.game_id}`}><button className="buttons edit" value={this.props.isCoach}>Edit Game</button></Link>
+                        <Link to={'/schedule'}><button className="buttons delete" value={this.props.isCoach} onClick={() => this.handleDelete()}>Delete Game?</button></Link>
                     </div>
                 </div>
 
-                <Link to={`/edit/game/${this.props.game_id}`}><button value={this.props.isCoach}>Edit Game</button></Link>
-                <Link to={'/schedule'}><button value={this.props.isCoach} onClick={() => this.handleDelete()}>Delete Game?</button></Link>
+                
                 {/* <button value={this.props.isCoach ? edit : this.props.edit_mode} onClick={() => this.handleCancel()}>Cancel</button> */}
             </div>
         )
