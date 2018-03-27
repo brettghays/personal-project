@@ -31,8 +31,8 @@ class Navbar extends Component {
 
                 <nav className="Navbar_Items Navbar_Items-Bottom">
                     <div className = 'Navbar_Link'><NavLink activeClassName='currentNav' to = '/user' className = 'links' value={this.props.sessionid}>Profile</NavLink></div>
-                    <div className = 'Navbar_Link'><a href = 'http://localhost:80/api/auth' className = 'links'>Register / Login</a></div>
-                    <div className = 'Navbar_Link'><a href = 'http://localhost:80/api/auth/logout' className = 'links'>Signout</a></div>
+                    <div className = 'Navbar_Link'><a href = '/api/auth' className = 'links'>Register / Login</a></div>
+                    <div className = 'Navbar_Link'><a href = '/api/auth/logout' className = 'links'>Signout</a></div>
                 </nav>
             </div>
         )

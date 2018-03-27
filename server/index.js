@@ -85,7 +85,7 @@ app.get('/api/auth/login', passport.authenticate('auth0'), (req,res,done) => {
         })
         console.log('this is req.user', req.user);
         console.log('this is passport.user', req.session.passport.user)
-    res.redirect('http://localhost:80/#/')//this works
+    res.redirect('/#/')//this works
 });
 
 app.get('/api/auth/me', (req, res) => {
@@ -96,7 +96,7 @@ app.get('/api/auth/logout', (req, res) => {
     console.log('this is passport.user', req.session.passport.user)
     req.logOut();
     console.log('Successful logout!',req.session.passport.user)
-    return res.redirect('http://localhost:80/#/');
+    return res.redirect('/#/');
     
   })
 
